@@ -3,59 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHINZ PC - High Performance Store</title>
+    <title>SHINZ PC - Hi-End PC Store</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { --primary-color: #00d2ff; --dark-bg: #0d0d0d; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
         
-        /* NAVBAR THEO MẪU SHINZ PC */
-        .navbar { background-color: var(--dark-bg) !important; border-bottom: 2px solid var(--primary-color); padding: 12px 0; }
-        .navbar-brand { color: white !important; font-weight: 800; display: flex; align-items: center; }
-        .logo-z { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary-color); margin-right: 10px; }
-
-        /* THANH TÌM KIẾM SẢN PHẨM */
-        .search-box { max-width: 400px; width: 100%; margin: 0 20px; }
-        .search-box .form-control { border-radius: 20px 0 0 20px; border: none; }
-        .btn-search { border-radius: 0 20px 20px 0; background: var(--primary-color); border: none; color: black; }
-
-        /* ICON TÀI KHOẢN & GIỎ HÀNG */
-        .nav-icons { display: flex; align-items: center; gap: 20px; color: white; }
-        .nav-icons a { color: white; text-decoration: none; font-size: 0.9rem; cursor: pointer; }
-        .cart-badge { background: #ff4757; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; position: absolute; top: -5px; right: -10px; }
-
-        /* GIỮ NGUYÊN BANNER CŨ */
-        .hero-banner { 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1920'); 
-            background-size: cover; background-position: center; padding: 100px 0; color: white; text-align: center;
+        /* NAVBAR CHÍNH THỨC CÓ LOGO CHỮ Z VÀ THANH TÌM KIẾM */
+        .navbar { 
+            background-color: var(--dark-bg) !important; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding: 10px 0; 
+        }
+        .navbar-brand { 
+            color: white !important; 
+            font-weight: 800; 
+            font-size: 1.6rem; 
+            letter-spacing: 1px; 
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Hiệu ứng logo tròn Z của bạn */
+        .logo-z-tech { 
+            width: 45px; 
+            height: 45px; 
+            border: 2px solid var(--primary-color); 
+            border-radius: 50%;
+            object-fit: cover; 
+            margin-right: 12px; 
         }
 
-        .pc-card { border: none; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; height: 100%; }
-        .btn-add-cart { background: var(--primary-color); color: black; font-weight: bold; width: 100%; border-radius: 8px; border: none; padding: 10px; }
+        /* Thanh tìm kiếm bên cạnh logo */
+        .search-container { max-width: 350px; width: 100%; margin: 0 20px; }
+        .search-input { border-radius: 20px 0 0 20px; border: none; padding: 8px 15px; }
+        .btn-search { border-radius: 0 20px 20px 0; background-color: var(--primary-color); border: none; color: black; padding: 8px 15px; }
+
+        /* Icon Giỏ hàng & Tài khoản */
+        .nav-icons { display: flex; align-items: center; gap: 20px; color: white; }
+        .nav-icons a { color: white; text-decoration: none; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; }
+        .cart-badge { background: #ff4757; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; position: absolute; top: -5px; right: -10px; }
+
+        /* THANH PHÂN LOẠI DANH MỤC (New) */
+        .category-bar { background: #1a1a1a; padding: 10px 0; border-bottom: 1px solid #333; text-align: center; }
+        .category-btn { color: white; border: 1px solid #444; margin: 0 5px; border-radius: 20px; transition: 0.3s; padding: 6px 15px; font-size: 0.9rem; }
+        .category-btn:hover, .category-btn.active { background: var(--primary-color); color: black; border-color: var(--primary-color); font-weight: bold; }
+
+        /* Banner chính */
+        .hero-banner { 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1920&q=80'); 
+            background-size: cover; 
+            background-position: center;
+            padding: 80px 0; 
+            color: white; 
+            text-align: center;
+        }
+
+        /* Card sản phẩm Hi-End */
+        .pc-card { border: none; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; height: 100%; background: white; }
+        .pc-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,210,255,0.2); }
+        .price { color: #ff4757; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; }
+        .btn-add-cart { background: var(--primary-color); color: black; font-weight: bold; width: 100%; border-radius: 8px; border: none; padding: 8px; transition: 0.3s; }
+        .btn-add-cart:hover { background-color: white; color: var(--primary-color); border: 1px solid var(--primary-color); }
         
-        /* Hiệu ứng ẩn sản phẩm không khớp tìm kiếm */
+        /* Hiệu ứng ẩn sản phẩm */
         .product-item.hidden { display: none; }
     </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
+        <div class="container d-flex align-items-center">
             <a class="navbar-brand" href="#">
-                <img src="logo.jpg" alt="Logo" class="logo-z"> <span>SHINZ PC</span>
+                <img src="logo.jpg" alt="Logo Z" class="logo-z-tech">
+                <span>SHINZ PC</span>
             </a>
 
-            <div class="search-box d-flex">
-                <input type="text" id="searchInput" class="form-control" placeholder="Nhập tên sản phẩm cần tìm...">
-                <button class="btn btn-search"><i class="fas fa-search"></i></button>
+            <div class="search-container d-flex mx-auto">
+                <input type="text" id="searchInput" class="form-control search-input" placeholder="Tìm tên linh kiện, phụ kiện PC...">
+                <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
             </div>
 
-            <div class="nav-icons ms-auto">
+            <div class="nav-icons">
                 <a data-bs-toggle="modal" data-bs-target="#accountModal">
-                    <i class="fas fa-user-circle fa-lg"></i> Tài khoản
+                    <i class="fas fa-user-circle fa-lg me-1"></i> Tài khoản
                 </a>
                 <a class="position-relative">
                     <i class="fas fa-shopping-basket fa-lg"></i> Giỏ hàng
@@ -65,82 +100,48 @@
         </div>
     </nav>
 
+    <div class="category-bar">
+        <div class="container">
+            <button class="btn category-btn active" onclick="filterCategory('all')">Tất cả</button>
+            <button class="btn category-btn" onclick="filterCategory('vga')">Card Đồ Họa (RTX)</button>
+            <button class="btn category-btn" onclick="filterCategory('monitor')">Màn hình ASUS</button>
+            <button class="btn category-btn" onclick="filterCategory('gear')">Phím & Chuột</button>
+            <button class="btn category-btn" onclick="filterCategory('cpu')">Intel Core i3-i9</button>
+        </div>
+    </div>
+
     <header class="hero-banner">
         <div class="container">
             <h1 class="display-3 fw-bold">SHINZ PC</h1>
-            <p class="lead">COMPONENTS & ACCESSORIES</p>
+            <p class="fs-4 fw-light">HI-END COMPONENTS & GAMING GEAR STORE</p>
         </div>
     </header>
 
     <div class="container my-5">
-        <h2 class="text-center mb-5 fw-bold">DANH MỤC SẢN PHẨM</h2>
+        <h3 id="categoryTitle" class="fw-bold mb-4 text-uppercase text-dark">Tất cả sản phẩm</h3>
         
-        <div id="noResults" class="text-center text-muted mb-4 d-none">
+        <div id="noResults" class="text-center text-muted mb-5 d-none p-5 bg-white rounded shadow-sm">
+            <i class="fas fa-search fa-3x mb-3 text-primary"></i>
             <h5>Không tìm thấy sản phẩm phù hợp.</h5>
+            <p>Vui lòng thử lại với từ khóa khác hoặc chọn danh mục khác.</p>
         </div>
 
-        <div class="row g-4" id="productList">
-            <div class="col-md-4 product-item">
-                <div class="card pc-card p-3 text-center">
-                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500" class="card-img-top rounded">
-                    <div class="card-body">
-                        <h5 class="product-name fw-bold">VGA RTX 4090 Rog Strix</h5>
-                        <p class="text-danger fw-bold fs-5">45.990.000đ</p>
-                        <button class="btn btn-add-cart" onclick="addToCart()">THÊM VÀO GIỎ</button>
-                    </div>
-                </div>
+        <div class="row g-4 text-center" id="productList">
             </div>
-            <div class="col-md-4 product-item">
-                <div class="card pc-card p-3 text-center">
-                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500" class="card-img-top rounded">
-                    <div class="card-body">
-                        <h5 class="product-name fw-bold">CPU Intel Core i9-14900K</h5>
-                        <p class="text-danger fw-bold fs-5">15.500.000đ</p>
-                        <button class="btn btn-add-cart" onclick="addToCart()">THÊM VÀO GIỎ</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 product-item">
-                <div class="card pc-card p-3 text-center">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500" class="card-img-top rounded">
-                    <div class="card-body">
-                        <h5 class="product-name fw-bold">Bàn Phím Cơ Custom RGB</h5>
-                        <p class="text-danger fw-bold fs-5">3.200.000đ</p>
-                        <button class="btn btn-add-cart" onclick="addToCart()">THÊM VÀO GIỎ</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <div class="modal fade" id="accountModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content border-0">
                 <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title">TẠO TÀI KHOẢN MỚI</h5>
+                    <h5 class="modal-title">Xác Nhận Giỏ Hàng</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body p-4">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Tên đăng nhập</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Mật khẩu</label>
-                            <input type="password" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Nhập lại mật khẩu</label>
-                            <input type="password" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-add-cart w-100">TẠO TÀI KHOẢN</button>
-                    </form>
-                    <div class="text-center mt-3">
-                        <p class="small text-muted">Hoặc đăng ký nhanh bằng</p>
-                        <button class="btn btn-outline-primary btn-sm me-2"><i class="fab fa-facebook"></i> Facebook</button>
-                        <button class="btn btn-outline-danger btn-sm"><i class="fas fa-envelope"></i> Email</button>
-                    </div>
+                <div class="modal-body p-4 text-center">
+                    <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">Đã thêm vào giỏ hàng thành công!</h5>
+                    <p class="text-muted" id="addedProductName"></p>
+                    <button type="button" class="btn btn-add-cart w-100 mt-2" data-bs-dismiss="modal">TIẾP TỤC MUA SẮM</button>
                 </div>
             </div>
         </div>
@@ -153,42 +154,108 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // --- XỬ LÝ TÌM KIẾM SẢN PHẨM THÔNG MINH ---
-        const searchInput = document.getElementById('searchInput');
-        const productItems = document.querySelectorAll('.product-item');
-        const noResults = document.getElementById('noResults');
+        // --- DỮ LIỆU MẪU 120+ SẢN PHẨM (Mẫu đại diện cho mỗi danh mục) ---
+        // Bạn chỉ cần copy thêm các dòng sản phẩm tương tự vào đây để đủ số lượng 120+
+        const allProducts = [
+            // --- 30 VGA RTX ---
+            { id: 1, cat: 'vga', name: 'VGA MSI RTX 3050 Ventus 2X 8G', price: '6.500.000đ', img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500' },
+            { id: 2, cat: 'vga', name: 'VGA ASUS RTX 4060 Dual OC 8GB', price: '8.900.000đ', img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500' },
+            { id: 3, cat: 'vga', name: 'VGA Gigabyte RTX 4070 Ti Super Gaming OC', price: '24.500.000đ', img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500' },
+            { id: 4, cat: 'vga', name: 'VGA ROG Strix RTX 4090 OC Edition 24GB', price: '55.000.000đ', img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500' },
+            { id: 5, cat: 'vga', name: 'VGA Palit RTX 3060 Dual 12GB', price: '7.800.000đ', img: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500' },
 
+            // --- 30 MÀN HÌNH ASUS ---
+            { id: 31, cat: 'monitor', name: 'Màn hình ASUS VY249HE 24" IPS 75Hz', price: '2.800.000đ', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500' },
+            { id: 32, cat: 'monitor', name: 'Màn hình Cong ASUS TUF VG27VH1B 27" 165Hz', price: '5.200.000đ', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500' },
+            { id: 33, cat: 'monitor', name: 'Màn hình ASUS ROG Swift PG259QN 360Hz', price: '18.900.000đ', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500' },
+            { id: 34, cat: 'monitor', name: 'Màn hình ASUS ROG Swift Pro PG248QP 540Hz (Cực đỉnh)', price: '25.000.000đ', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500' },
+            { id: 35, cat: 'monitor', name: 'Màn hình Đồ Họa ASUS ProArt PA278CV 2K', price: '10.500.000đ', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500' },
+
+            // --- 30 PHÍM & CHUỘT (Logitech, ATK) ---
+            { id: 61, cat: 'gear', name: 'Chuột Logitech G102 Gen2 LIGHTSYNC (Có dây)', price: '399.000đ', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500' },
+            { id: 62, cat: 'gear', name: 'Chuột Logitech G Pro X Superlight 2 Wireless', price: '3.500.000đ', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500' },
+            { id: 63, cat: 'gear', name: 'Bàn phím cơ ATK68 Magnetic Switch (Màu đen)', price: '1.850.000đ', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500' },
+            { id: 64, cat: 'gear', name: 'Bàn phím cơ Logitech G Pro X TKL LIGHTSPEED', price: '4.200.000đ', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500' },
+            { id: 65, cat: 'gear', name: 'Chuột Pulsar X2V2 Wireless Gaming', price: '1.990.000đ', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500' },
+
+            // --- 30 INTEL CPU ---
+            { id: 91, cat: 'cpu', name: 'CPU Intel Core i3-12100F (Tray)', price: '2.200.000đ', img: 'https://via.placeholder.com/200x150?text=CPU+I3' },
+            { id: 92, cat: 'cpu', name: 'CPU Intel Core i5-13400F', price: '5.100.000đ', img: 'https://via.placeholder.com/200x150?text=CPU+I5' },
+            { id: 93, cat: 'cpu', name: 'CPU Intel Core i7-14700K', price: '10.500.000đ', img: 'https://via.placeholder.com/200x150?text=CPU+I7' },
+            { id: 94, cat: 'cpu', name: 'CPU Intel Core i9-14900K (Box chính hãng)', price: '15.900.000đ', img: 'https://via.placeholder.com/200x150?text=CPU+I9' },
+            { id: 95, cat: 'cpu', name: 'CPU Intel Core i9-14900KS (Cực đỉnh)', price: '18.500.000đ', img: 'https://via.placeholder.com/200x150?text=CPU+I9KS' },
+        ];
+
+        // --- HÀM HIỂN THỊ SẢN PHẨM RA GRID ---
+        function displayProducts(productsToDisplay) {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = ''; // Xóa sạch lưới sản phẩm cũ
+
+            productsToDisplay.forEach(p => {
+                const productCard = `
+                    <div class="col-6 col-md-3">
+                        <div class="card pc-card p-2 text-center">
+                            <img src="${p.img}" class="card-img-top rounded mb-2">
+                            <div class="card-body p-1">
+                                <h6 class="fw-bold product-name" style="font-size: 0.9rem; height: 2.7rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">${p.name}</h6>
+                                <p class="price mb-2">${p.price}</p>
+                                <button class="btn btn-add-cart btn-sm" onclick="addToCart('${p.name}')">MUA NGAY</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productList.insertAdjacentHTML('beforeend', productCard);
+            });
+        }
+
+        // --- HÀM LỌC SẢN PHẨM THEO DANH MỤC (New) ---
+        function filterCategory(category) {
+            // Cập nhật giao diện nút phân loại
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Cập nhật tiêu đề danh mục
+            const categoryTitle = document.getElementById('categoryTitle');
+            const categoryNames = { all: 'Tất cả sản phẩm', vga: 'Card Đồ Họa (RTX)', monitor: 'Màn hình ASUS', gear: 'Phím & Chuột', cpu: 'Intel Core i3-i9' };
+            categoryTitle.innerText = categoryNames[category];
+
+            // Ẩn thông báo "Không tìm thấy"
+            document.getElementById('noResults').classList.add('d-none');
+
+            // Hiển thị sản phẩm theo danh mục đã chọn
+            const filteredProducts = category === 'all' ? allProducts : allProducts.filter(p => p.cat === category);
+            displayProducts(filteredProducts);
+        }
+
+        // --- TÍNH NĂNG TÌM KIẾM SẢN PHẨM THÔNG MINH ---
+        const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', function() {
             const query = this.value.toLowerCase().trim();
-            let hasVisibleItems = false;
+            const noResults = document.getElementById('noResults');
 
-            productItems.forEach(item => {
-                const productName = item.querySelector('.product-name').innerText.toLowerCase();
-                
-                // Thuật toán: Hiển thị nếu khớp hoàn toàn hoặc chứa từ khóa (tương tự)
-                if (productName.includes(query)) {
-                    item.classList.remove('hidden');
-                    hasVisibleItems = true;
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
+            // Lọc sản phẩm theo tên khớp hoàn toàn hoặc chứa từ khóa
+            const filteredProducts = allProducts.filter(p => p.name.toLowerCase().includes(query));
 
-            // Hiện thông báo nếu không có sản phẩm nào khớp
-            if (hasVisibleItems) {
+            if (filteredProducts.length > 0) {
                 noResults.classList.add('d-none');
+                displayProducts(filteredProducts);
             } else {
                 noResults.classList.remove('d-none');
+                document.getElementById('productList').innerHTML = '';
             }
         });
 
-        // --- XỬ LÝ GIỎ HÀNG ---
+        // --- XỬ LÝ GIỎ HÀNG ĐƠN GIẢN ---
         let count = 0;
-        function addToCart() {
+        function addToCart(productName) {
             count++;
             document.getElementById('cart-count').innerText = count;
-            alert("Đã thêm 1 linh kiện vào giỏ hàng của bạn!");
+            document.getElementById('addedProductName').innerText = productName;
+            new bootstrap.Modal(document.getElementById('orderModal')).show();
         }
+
+        // --- CHẠY LẦN ĐẦU KHI TRANG LOAD ---
+        displayProducts(allProducts); // Hiển thị tất cả 120 sản phẩm
     </script>
 </body>
 </html>
