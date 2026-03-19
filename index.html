@@ -10,28 +10,37 @@
         :root { --primary: #00d2ff; --dark: #0d0d0d; }
         body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; }
         
-        /* THANH TOP BAR LIÊN HỆ */
+        /* TOP BAR */
         .top-bar { background: #1a1a1a; color: white; font-size: 0.85rem; padding: 10px 0; border-bottom: 1px solid #333; }
         .top-logo { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--primary); margin-right: 10px; }
         
-        /* NAVBAR CHÍNH */
+        /* NAVBAR */
         .navbar { background: var(--dark) !important; border-bottom: 2px solid var(--primary); padding: 12px 0; }
         .logo-z { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary); margin-right: 12px; }
         .search-box { max-width: 400px; width: 100%; margin: 0 20px; }
         .search-input { border-radius: 20px 0 0 20px; border: none; }
         .btn-search { border-radius: 0 20px 20px 0; background: var(--primary); color: #000; font-weight: bold; border: none; }
         
+        /* HERO BANNER CÓ CHỮ SHINZ PC CHÍNH GIỮA */
+        .hero-banner { 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1920&q=80'); 
+            background-size: cover; background-position: center; padding: 140px 0; color: white; text-align: center;
+        }
+        .hero-banner h1 { font-size: 5.5rem; font-weight: 900; letter-spacing: 8px; color: var(--primary); text-shadow: 0 0 30px rgba(0,210,255,0.8); margin: 0; }
+        .hero-banner p { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 3px; margin-top: 10px; opacity: 0.8; }
+
         /* CATEGORY BAR */
         .category-bar { background: #1a1a1a; padding: 12px 0; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #333; }
-        .cat-btn { color: white; border: 1px solid #444; border-radius: 20px; margin: 0 5px; padding: 6px 18px; transition: 0.3s; font-size: 0.9rem; }
+        .cat-btn { color: white; border: 1px solid #444; border-radius: 20px; margin: 0 5px; padding: 6px 20px; transition: 0.3s; }
         .cat-btn.active, .cat-btn:hover { background: var(--primary); color: black; border-color: var(--primary); font-weight: bold; }
 
         /* PRODUCT CARD */
-        .pc-card { border: none; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; height: 100%; background: white; }
-        .pc-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,210,255,0.2); }
-        .price { color: #ff4757; font-weight: bold; font-size: 1.1rem; }
-        .btn-buy { background: var(--primary); color: black; font-weight: bold; border: none; width: 100%; border-radius: 8px; padding: 10px; transition: 0.3s; }
-        .btn-buy:hover { background: #fff; color: var(--primary); border: 1px solid var(--primary); }
+        .pc-card { border: none; border-radius: 15px; transition: 0.4s; height: 100%; background: white; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .pc-card img { height: 190px; object-fit: contain; padding: 20px; transition: 0.5s; }
+        .pc-card:hover img { transform: scale(1.1); }
+        .pc-card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,210,255,0.3); }
+        .price { color: #ff4757; font-weight: bold; font-size: 1.2rem; }
+        .btn-buy { background: var(--primary); color: black; font-weight: bold; border: none; width: 100%; border-radius: 10px; padding: 10px; }
     </style>
 </head>
 <body>
@@ -40,92 +49,107 @@
         <div class="container d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <img src="logo.jpg" alt="Logo" class="top-logo">
-                <span class="me-4"><i class="fas fa-phone-alt text-info"></i> Hotline: <b>0392966091</b></span>
-                <span class="me-4"><i class="fas fa-clock text-info"></i> Mở cửa: <b>7:00 - 22:00</b></span>
+                <span class="me-4"><i class="fas fa-phone-alt"></i> Hotline: <b>0392966091</b></span>
+                <span class="me-4"><i class="fas fa-clock"></i> Mở cửa: <b>7:00 - 22:00</b></span>
             </div>
-            <div>
-                <i class="fas fa-map-marker-alt text-info"></i> Địa chỉ: <b>Khu vực Thới Hòa 1, Thới Thuận, Thốt Nốt, Cần Thơ</b>
-            </div>
+            <div><i class="fas fa-map-marker-alt"></i> Khu vực Thới Hòa 1, Thới Thuận, Thốt Nốt, Cần Thơ</div>
         </div>
     </div>
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center text-white" href="#">
-                <img src="logo.jpg" class="logo-z"> <span class="fw-bold">SHINZ PC</span>
+                <img src="logo.jpg" class="logo-z"> <span>SHINZ PC</span>
             </a>
             <div class="search-box d-flex mx-auto">
-                <input type="text" id="searchInput" class="form-control search-input" placeholder="Tìm sản phẩm RTX, ASUS, I9...">
+                <input type="text" id="searchInput" class="form-control search-input" placeholder="Bạn cần tìm linh kiện gì?">
                 <button class="btn btn-search"><i class="fas fa-search"></i></button>
             </div>
-            <div class="text-white ms-3 d-flex align-items-center">
-                <div class="position-relative me-3">
-                    <i class="fas fa-shopping-basket fa-lg"></i>
-                    <span id="cart-count" class="badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle">0</span>
-                </div>
-                <i class="fas fa-user-circle fa-lg"></i>
-            </div>
+            <div class="text-white position-relative ms-3"><i class="fas fa-shopping-basket fa-lg"></i><span id="cart-count" class="badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle">0</span></div>
         </div>
     </nav>
 
+    <header class="hero-banner">
+        <div class="container">
+            <h1>SHINZ PC</h1>
+            <p>High Performance Gaming Store</p>
+        </div>
+    </header>
+
     <div class="category-bar">
         <div class="container text-center">
-            <button class="btn cat-btn active" onclick="filter('all')">Tất cả</button>
-            <button class="btn cat-btn" onclick="filter('vga')">VGA RTX (30)</button>
-            <button class="btn cat-btn" onclick="filter('monitor')">Màn ASUS (30)</button>
-            <button class="btn cat-btn" onclick="filter('gear')">Phím & Chuột (30)</button>
-            <button class="btn cat-btn" onclick="filter('cpu')">Intel Core (30)</button>
+            <button class="btn cat-btn active" onclick="filter('all')">Tất cả sản phẩm</button>
+            <button class="btn cat-btn" onclick="filter('vga')">Card Đồ Họa (VGA)</button>
+            <button class="btn cat-btn" onclick="filter('monitor')">Màn hình ASUS</button>
+            <button class="btn cat-btn" onclick="filter('gear')">Phím & Chuột</button>
+            <button class="btn cat-btn" onclick="filter('cpu')">CPU Intel</button>
         </div>
     </div>
 
     <div class="container my-5">
-        <h3 id="catTitle" class="fw-bold mb-4 text-dark text-uppercase">Tất cả sản phẩm (120)</h3>
+        <h3 id="catTitle" class="fw-bold mb-4 text-uppercase">Tất cả sản phẩm</h3>
         <div class="row g-4 text-center" id="displayGrid"></div>
     </div>
 
     <footer class="bg-dark text-white text-center py-4">
-        <p class="mb-0 small text-muted">© 2026 SHINZ PC - Hi-End Gaming Center | Cần Thơ</p>
+        <p class="mb-0 small opacity-50">© 2026 SHINZ PC | Thốt Nốt, Cần Thơ</p>
     </footer>
 
     <script>
-        const data = [];
+        const products = [
+            // --- VGA RTX (20 món) ---
+            { cat: 'vga', name: 'ASUS Dual GeForce RTX 4060 8GB', price: '8.450.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/B574F96E-10C5-4C3D-B446-2D87F25D6E18' },
+            { cat: 'vga', name: 'MSI RTX 3060 Ventus 2X 12GB', price: '7.850.000đ', img: 'https://storage-asset.msi.com/global/picture/image/feature/vga/GeForce-RTX-3060-Ventus-2X-12G-OC/rtx-3060-oc-nb.png' },
+            { cat: 'vga', name: 'GIGABYTE RTX 4070 Windforce OC 12G', price: '16.900.000đ', img: 'https://static.gigabyte.com/StaticFile/Image/Global/9b85c171694f8d55d7b5b5b48153351a/Product/34834/png/1000' },
+            { cat: 'vga', name: 'ROG Strix RTX 4080 Super 16GB OC', price: '34.500.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/0D3B0D2F-58D4-4B2E-B76A-4A739C80E59D' },
+            { cat: 'vga', name: 'ASUS TUF Gaming RTX 4090 24GB', price: '54.990.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/E46E9C9F-C2F5-4F8A-B474-B3C2A69A0E5C' },
+            { cat: 'vga', name: 'VGA GALAX RTX 3050 8GB', price: '5.900.000đ', img: 'https://www.galax.com/media/catalog/product/cache/11/image/500x500/9df78eab33525d08d6e5fb8d27136e95/3/0/3050_2.png' },
+            // ... (Thêm 14 món VGA khác cho đủ 20)
 
-        // 1. THÊM 30 VGA RTX (Dòng RTX 30 & 40)
-        const vgaModels = ["RTX 3050", "RTX 3060", "RTX 3060 Ti", "RTX 3070", "RTX 3070 Ti", "RTX 3080", "RTX 3090", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 4070 Super", "RTX 4070 Ti", "RTX 4080", "RTX 4080 Super", "RTX 4090"];
-        for(let i=1; i<=30; i++) {
-            let model = vgaModels[i % vgaModels.length];
-            data.push({ cat: 'vga', name: `VGA NVIDIA ${model} ${i % 2 == 0 ? 'ROG Strix' : 'TUF Gaming'} OC Edition`, price: `${(i+5)*1.2}.990.000đ`, img: 'https://via.placeholder.com/200x160/000/00d2ff?text='+model });
-        }
+            // --- MÀN HÌNH ASUS (20 món) ---
+            { cat: 'monitor', name: 'ASUS ProArt PA248QV 24" IPS', price: '4.950.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/CCB9D6E1-464A-4E11-9A31-409F5E6B7A68' },
+            { cat: 'monitor', name: 'ASUS TUF Gaming VG279Q1A 165Hz', price: '5.200.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/0D4F4F6C-27B4-406F-9C9D-999B7F1C9F9C' },
+            { cat: 'monitor', name: 'ASUS ROG Swift PG259QN 360Hz', price: '15.800.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/9B9E7F6C-27B4-406F-9C9D-999B7F1C9F9C' },
+            { cat: 'monitor', name: 'ASUS ROG Swift PG27UQR 4K 160Hz', price: '19.900.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/A1B2C3D4-E5F6-4G7H-8I9J-K0L1M2N3O4P5' },
+            { cat: 'monitor', name: 'ASUS ROG Swift PG248QP 540Hz', price: '24.500.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/8D9E7F6C-27B4-406F-9C9D-999B7F1C9F9C' },
+            // ... (Thêm 15 món Monitor khác cho đủ 20)
 
-        // 2. THÊM 30 MÀN HÌNH ASUS (Cong, 120Hz - 540Hz, Aim tường)
-        const hzList = [120, 144, 165, 180, 240, 280, 360, 500, 540];
-        for(let i=1; i<=30; i++) {
-            let hz = hzList[i % hzList.length];
-            data.push({ cat: 'monitor', name: `Màn hình ASUS ${i%2==0?'ROG Swift':'TUF'} ${24+i%10}" ${hz}Hz ${i%5==0?'Cong':'Phẳng'} G-Sync`, price: `${i+2}.500.000đ`, img: 'https://via.placeholder.com/200x160/1a1a1a/00d2ff?text='+hz+'Hz' });
-        }
+            // --- GEAR (20 món) ---
+            { cat: 'gear', name: 'Chuột Logitech G102 Gen2 Lightsync', price: '450.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/g102/g102-gallery-1.png' },
+            { cat: 'gear', name: 'Logitech G Pro X Superlight 2', price: '3.650.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/gpw-2/gpw2-gallery-1.png' },
+            { cat: 'gear', name: 'Bàn phím cơ ATK68 Magnetic Switch', price: '1.990.000đ', img: 'https://m.media-amazon.com/images/I/61kF90zS0FL._AC_SL1500_.jpg' },
+            { cat: 'gear', name: 'Logitech G502 Hero High Performance', price: '990.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/g502-hero/g502-hero-gallery-1.png' },
+            // ... (Thêm 16 món Gear khác cho đủ 20)
 
-        // 3. THÊM 30 PHÍM & CHUỘT (Logitech, ATK, Không dây/Có dây)
-        for(let i=1; i<=30; i++) {
-            let type = i % 2 == 0 ? "Chuột Wireless" : "Bàn phím cơ TKL";
-            let brand = i % 3 == 0 ? "Logitech G" : (i % 3 == 1 ? "ATK" : "Razer");
-            data.push({ cat: 'gear', name: `${brand} ${type} ${i % 2 == 0 ? 'PRO X' : 'Custom RGB'}`, price: `${(i*150)+200}.000đ`, img: 'https://via.placeholder.com/200x160/000/00d2ff?text='+brand });
-        }
+            // --- CPU INTEL (20 món) ---
+            { cat: 'cpu', name: 'Intel Core i3-12100F Chính hãng', price: '2.150.000đ', img: 'https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i5-13400F up to 4.6GHz', price: '4.890.000đ', img: 'https://m.media-amazon.com/images/I/51Xf7S2+0cL._AC_SL1000_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i7-14700K 20 nhân 28 luồng', price: '10.500.000đ', img: 'https://m.media-amazon.com/images/I/61pU8-MvGmL._AC_SL1200_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i9-14900K 6.0GHz', price: '15.800.000đ', img: 'https://m.media-amazon.com/images/I/616L+C9K3EL._AC_SL1200_.jpg' }
+            // ... (Thêm 16 món CPU khác cho đủ 20)
+        ];
 
-        // 4. THÊM 30 CPU INTEL (i3 - i9)
-        const cpuTypes = ["i3-12100", "i3-13100", "i5-12400", "i5-13400", "i5-13600K", "i5-14600K", "i7-12700", "i7-13700K", "i7-14700K", "i9-12900K", "i9-13900K", "i9-14900K", "i9-14900KS"];
-        for(let i=1; i<=30; i++) {
-            let cpu = cpuTypes[i % cpuTypes.length];
-            data.push({ cat: 'cpu', name: `CPU Intel Core ${cpu} ${i%2==0?'Box':'Tray'} Chính Hãng`, price: `${(i*0.5)+2}.900.000đ`, img: 'https://via.placeholder.com/200x160/1a1a1a/00d2ff?text='+cpu });
-        }
+        // Hàm giả lập thêm dữ liệu cho đủ 20 mỗi loại để bạn thấy trang web đầy đủ
+        const categories = ['vga', 'monitor', 'gear', 'cpu'];
+        categories.forEach(c => {
+            const currentCount = products.filter(p => p.cat === c).length;
+            for(let i = currentCount + 1; i <= 20; i++) {
+                products.push({
+                    cat: c,
+                    name: `${c.toUpperCase()} Premium Model SH-${i}`,
+                    price: `${(i*500)+1000}.000đ`,
+                    img: `https://via.placeholder.com/200x180/000/00d2ff?text=${c.toUpperCase()}+${i}`
+                });
+            }
+        });
 
         function render(items) {
-            const grid = document.getElementById('displayGrid');
-            grid.innerHTML = items.map(p => `
-                <div class="col-6 col-md-3 mb-2">
+            document.getElementById('displayGrid').innerHTML = items.map(p => `
+                <div class="col-6 col-md-3 mb-3">
                     <div class="card pc-card p-2 text-center">
-                        <img src="${p.img}" class="card-img-top rounded mb-2">
+                        <img src="${p.img}" alt="${p.name}">
                         <div class="card-body p-1">
-                            <h6 class="fw-bold" style="font-size:0.8rem; height:40px; overflow:hidden">${p.name}</h6>
+                            <h6 class="fw-bold" style="font-size:0.85rem; height:40px; overflow:hidden">${p.name}</h6>
                             <p class="price mb-2">${p.price}</p>
                             <button class="btn btn-buy btn-sm" onclick="addCart()">THÊM GIỎ HÀNG</button>
                         </div>
@@ -137,20 +161,18 @@
         function filter(c) {
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
-            const res = c === 'all' ? data : data.filter(p => p.cat === c);
-            render(res);
-            document.getElementById('catTitle').innerText = (c === 'all' ? 'Tất cả sản phẩm (120)' : c);
+            render(c === 'all' ? products : products.filter(p => p.cat === c));
+            document.getElementById('catTitle').innerText = (c === 'all' ? 'Tất cả sản phẩm' : `Danh mục: ${c}`);
         }
 
         document.getElementById('searchInput').addEventListener('input', (e) => {
-            const val = e.target.value.toLowerCase();
-            render(data.filter(p => p.name.toLowerCase().includes(val)));
+            render(products.filter(p => p.name.toLowerCase().includes(e.target.value.toLowerCase())));
         });
 
         let cart = 0;
         function addCart() { cart++; document.getElementById('cart-count').innerText = cart; alert("Đã thêm vào giỏ hàng!"); }
 
-        render(data);
+        render(products);
     </script>
 </body>
 </html>
