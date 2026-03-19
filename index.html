@@ -21,7 +21,7 @@
         .search-input { border-radius: 20px 0 0 20px; border: none; }
         .btn-search { border-radius: 0 20px 20px 0; background: var(--primary); color: #000; font-weight: bold; border: none; }
         
-        /* HERO BANNER CÓ CHỮ SHINZ PC CHÍNH GIỮA */
+        /* HERO BANNER - GIỮ NGUYÊN CHỮ SHINZ PC CHÍNH GIỮA */
         .hero-banner { 
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1920&q=80'); 
             background-size: cover; background-position: center; padding: 140px 0; color: white; text-align: center;
@@ -36,10 +36,9 @@
 
         /* PRODUCT CARD */
         .pc-card { border: none; border-radius: 15px; transition: 0.4s; height: 100%; background: white; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .pc-card img { height: 190px; object-fit: contain; padding: 20px; transition: 0.5s; }
-        .pc-card:hover img { transform: scale(1.1); }
+        .pc-card img { height: 180px; object-fit: contain; padding: 20px; transition: 0.5s; }
         .pc-card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,210,255,0.3); }
-        .price { color: #ff4757; font-weight: bold; font-size: 1.2rem; }
+        .price { color: #ff4757; font-weight: bold; font-size: 1.15rem; }
         .btn-buy { background: var(--primary); color: black; font-weight: bold; border: none; width: 100%; border-radius: 10px; padding: 10px; }
     </style>
 </head>
@@ -62,7 +61,7 @@
                 <img src="logo.jpg" class="logo-z"> <span>SHINZ PC</span>
             </a>
             <div class="search-box d-flex mx-auto">
-                <input type="text" id="searchInput" class="form-control search-input" placeholder="Bạn cần tìm linh kiện gì?">
+                <input type="text" id="searchInput" class="form-control search-input" placeholder="Tìm kiếm nhanh...">
                 <button class="btn btn-search"><i class="fas fa-search"></i></button>
             </div>
             <div class="text-white position-relative ms-3"><i class="fas fa-shopping-basket fa-lg"></i><span id="cart-count" class="badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle">0</span></div>
@@ -79,7 +78,7 @@
     <div class="category-bar">
         <div class="container text-center">
             <button class="btn cat-btn active" onclick="filter('all')">Tất cả sản phẩm</button>
-            <button class="btn cat-btn" onclick="filter('vga')">Card Đồ Họa (VGA)</button>
+            <button class="btn cat-btn" onclick="filter('vga')">VGA RTX</button>
             <button class="btn cat-btn" onclick="filter('monitor')">Màn hình ASUS</button>
             <button class="btn cat-btn" onclick="filter('gear')">Phím & Chuột</button>
             <button class="btn cat-btn" onclick="filter('cpu')">CPU Intel</button>
@@ -87,7 +86,7 @@
     </div>
 
     <div class="container my-5">
-        <h3 id="catTitle" class="fw-bold mb-4 text-uppercase">Tất cả sản phẩm</h3>
+        <h3 id="catTitle" class="fw-bold mb-4 text-uppercase text-center">Tất cả sản phẩm</h3>
         <div class="row g-4 text-center" id="displayGrid"></div>
     </div>
 
@@ -97,51 +96,54 @@
 
     <script>
         const products = [
-            // --- VGA RTX (20 món) ---
-            { cat: 'vga', name: 'ASUS Dual GeForce RTX 4060 8GB', price: '8.450.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/B574F96E-10C5-4C3D-B446-2D87F25D6E18' },
+            // --- VGA RTX (10 món) ---
+            { cat: 'vga', name: 'ASUS Dual RTX 4060 OC 8GB', price: '8.450.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/B574F96E-10C5-4C3D-B446-2D87F25D6E18' },
             { cat: 'vga', name: 'MSI RTX 3060 Ventus 2X 12GB', price: '7.850.000đ', img: 'https://storage-asset.msi.com/global/picture/image/feature/vga/GeForce-RTX-3060-Ventus-2X-12G-OC/rtx-3060-oc-nb.png' },
-            { cat: 'vga', name: 'GIGABYTE RTX 4070 Windforce OC 12G', price: '16.900.000đ', img: 'https://static.gigabyte.com/StaticFile/Image/Global/9b85c171694f8d55d7b5b5b48153351a/Product/34834/png/1000' },
-            { cat: 'vga', name: 'ROG Strix RTX 4080 Super 16GB OC', price: '34.500.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/0D3B0D2F-58D4-4B2E-B76A-4A739C80E59D' },
-            { cat: 'vga', name: 'ASUS TUF Gaming RTX 4090 24GB', price: '54.990.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/E46E9C9F-C2F5-4F8A-B474-B3C2A69A0E5C' },
-            { cat: 'vga', name: 'VGA GALAX RTX 3050 8GB', price: '5.900.000đ', img: 'https://www.galax.com/media/catalog/product/cache/11/image/500x500/9df78eab33525d08d6e5fb8d27136e95/3/0/3050_2.png' },
-            // ... (Thêm 14 món VGA khác cho đủ 20)
+            { cat: 'vga', name: 'Gigabyte RTX 4070 Windforce 12G', price: '16.900.000đ', img: 'https://static.gigabyte.com/StaticFile/Image/Global/9b85c171694f8d55d7b5b5b48153351a/Product/34834/png/1000' },
+            { cat: 'vga', name: 'ROG Strix RTX 4080 Super OC', price: '34.500.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/0D3B0D2F-58D4-4B2E-B76A-4A739C80E59D' },
+            { cat: 'vga', name: 'ASUS TUF Gaming RTX 4090 24GB', price: '55.900.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/E46E9C9F-C2F5-4F8A-B474-B3C2A69A0E5C' },
+            { cat: 'vga', name: 'MSI RTX 4060 Ti Gaming X 8GB', price: '11.500.000đ', img: 'https://storage-asset.msi.com/global/picture/image/feature/vga/GeForce-RTX-4060-Ti-GAMING-X-8G/rtx-4060-ti-gaming-x-8g-nb.png' },
+            { cat: 'vga', name: 'Galax RTX 3050 8GB OC', price: '5.950.000đ', img: 'https://www.galax.com/media/catalog/product/cache/11/image/500x500/9df78eab33525d08d6e5fb8d27136e95/3/0/3050_2.png' },
+            { cat: 'vga', name: 'Gigabyte RTX 4060 Ti Eagle', price: '10.900.000đ', img: 'https://static.gigabyte.com/StaticFile/Image/Global/e6f1f8b1b5e5b7e8d9e9f1f8b1b5e5b7/Product/34834/png/1000' },
+            { cat: 'vga', name: 'Colorful iGame RTX 4070 Ultra', price: '17.200.000đ', img: 'https://en.colorful.cn/Static/Upload/Product/20230412/1c5b8b1b-b1b5-4e8d-9e9f-1f8b1b5e5b7e.png' },
+            { cat: 'vga', name: 'Zotac RTX 4070 Super Trinity', price: '16.500.000đ', img: 'https://www.zotac.com/download/files/styles/w600/public/product_main_image/graphics_cards/zt-d40720d-10p-01.png' },
 
-            // --- MÀN HÌNH ASUS (20 món) ---
-            { cat: 'monitor', name: 'ASUS ProArt PA248QV 24" IPS', price: '4.950.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/CCB9D6E1-464A-4E11-9A31-409F5E6B7A68' },
-            { cat: 'monitor', name: 'ASUS TUF Gaming VG279Q1A 165Hz', price: '5.200.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/0D4F4F6C-27B4-406F-9C9D-999B7F1C9F9C' },
-            { cat: 'monitor', name: 'ASUS ROG Swift PG259QN 360Hz', price: '15.800.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/9B9E7F6C-27B4-406F-9C9D-999B7F1C9F9C' },
-            { cat: 'monitor', name: 'ASUS ROG Swift PG27UQR 4K 160Hz', price: '19.900.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/A1B2C3D4-E5F6-4G7H-8I9J-K0L1M2N3O4P5' },
-            { cat: 'monitor', name: 'ASUS ROG Swift PG248QP 540Hz', price: '24.500.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/8D9E7F6C-27B4-406F-9C9D-999B7F1C9F9C' },
-            // ... (Thêm 15 món Monitor khác cho đủ 20)
+            // --- MÀN HÌNH (10 món) ---
+            { cat: 'monitor', name: 'ASUS VY249HE 24" IPS 75Hz', price: '2.850.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/B5C9D6E1-464A-4E11-9A31-409F5E6B7A68' },
+            { cat: 'monitor', name: 'ASUS TUF VG279Q1A 165Hz', price: '5.100.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/0D4F4F6C-27B4-406F-9C9D-999B7F1C9F9C' },
+            { cat: 'monitor', name: 'ASUS ROG Swift 360Hz', price: '15.900.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/9B9E7F6C-27B4-406F-9C9D-999B7F1C9F9C' },
+            { cat: 'monitor', name: 'ASUS TUF VG27VH1B Cong', price: '4.850.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/A1B2C3D4-E5F6-4G7H-8I9J-K0L1M2N3O4P5' },
+            { cat: 'monitor', name: 'ASUS ROG Swift Pro 540Hz', price: '24.900.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/8D9E7F6C-27B4-406F-9C9D-999B7F1C9F9C' },
+            { cat: 'monitor', name: 'ASUS ProArt PA278QV 2K', price: '8.400.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/CCB9D6E1-464A-4E11-9A31-409F5E6B7A68' },
+            { cat: 'monitor', name: 'ASUS TUF VG32VQ Cong 2K', price: '8.900.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/D1E2F3G4-H5I6-J7K8-L9M0-N1O2P3Q4R5S6' },
+            { cat: 'monitor', name: 'ASUS ROG Strix XG27AQ 2K', price: '11.500.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/F1G2H3I4-J5K6-L7M8-N9O0-P1Q2R3S4T5U6' },
+            { cat: 'monitor', name: 'ASUS ROG Swift OLED 4K', price: '32.000.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/G1H2I3J4-K5L6-M7N8-O9P0-Q1R2S3T4U5V6' },
+            { cat: 'monitor', name: 'ASUS VZ279HE Siêu mỏng', price: '3.900.000đ', img: 'https://dlcdnwebimgs.asus.com/gain/H1I2J3K4-L5M6-N7O8-P9Q0-R1S2T3U4V5W6' },
 
-            // --- GEAR (20 món) ---
-            { cat: 'gear', name: 'Chuột Logitech G102 Gen2 Lightsync', price: '450.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/g102/g102-gallery-1.png' },
-            { cat: 'gear', name: 'Logitech G Pro X Superlight 2', price: '3.650.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/gpw-2/gpw2-gallery-1.png' },
-            { cat: 'gear', name: 'Bàn phím cơ ATK68 Magnetic Switch', price: '1.990.000đ', img: 'https://m.media-amazon.com/images/I/61kF90zS0FL._AC_SL1500_.jpg' },
-            { cat: 'gear', name: 'Logitech G502 Hero High Performance', price: '990.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/g502-hero/g502-hero-gallery-1.png' },
-            // ... (Thêm 16 món Gear khác cho đủ 20)
+            // --- GEAR (10 món) ---
+            { cat: 'gear', name: 'Logitech G102 Gen2 Lightsync', price: '450.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/g102/g102-gallery-1.png' },
+            { cat: 'gear', name: 'Logitech G Pro X Superlight 2', price: '3.550.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/gpw-2/gpw2-gallery-1.png' },
+            { cat: 'gear', name: 'Bàn phím cơ ATK68 Magnetic', price: '1.950.000đ', img: 'https://m.media-amazon.com/images/I/61kF90zS0FL._AC_SL1500_.jpg' },
+            { cat: 'gear', name: 'Logitech G502 X Wireless', price: '2.850.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/g502-hero/g502-hero-gallery-1.png' },
+            { cat: 'gear', name: 'Bàn phím Logitech G Pro TKL', price: '2.400.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/pro-keyboard/pro-keyboard-gallery-1.png' },
+            { cat: 'gear', name: 'Chuột ATK F1 Wireless', price: '1.450.000đ', img: 'https://m.media-amazon.com/images/I/51767yL-WlL._AC_SL1500_.jpg' },
+            { cat: 'gear', name: 'Logitech G512 RGB Mechanical', price: '1.850.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/g512/g512-gallery-1.png' },
+            { cat: 'gear', name: 'Razer DeathAdder V3 Pro', price: '3.200.000đ', img: 'https://m.media-amazon.com/images/I/51767yL-WlL._AC_SL1500_.jpg' },
+            { cat: 'gear', name: 'Bàn phím cơ DareU EK87', price: '550.000đ', img: 'https://dareu.com.vn/wp-content/uploads/2020/09/EK87-Black-Red-1.jpg' },
+            { cat: 'gear', name: 'Tai nghe Logitech G733', price: '2.950.000đ', img: 'https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/gaming/en/products/g733/g733-gallery-1.png' },
 
-            // --- CPU INTEL (20 món) ---
-            { cat: 'cpu', name: 'Intel Core i3-12100F Chính hãng', price: '2.150.000đ', img: 'https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg' },
-            { cat: 'cpu', name: 'Intel Core i5-13400F up to 4.6GHz', price: '4.890.000đ', img: 'https://m.media-amazon.com/images/I/51Xf7S2+0cL._AC_SL1000_.jpg' },
-            { cat: 'cpu', name: 'Intel Core i7-14700K 20 nhân 28 luồng', price: '10.500.000đ', img: 'https://m.media-amazon.com/images/I/61pU8-MvGmL._AC_SL1200_.jpg' },
-            { cat: 'cpu', name: 'Intel Core i9-14900K 6.0GHz', price: '15.800.000đ', img: 'https://m.media-amazon.com/images/I/616L+C9K3EL._AC_SL1200_.jpg' }
-            // ... (Thêm 16 món CPU khác cho đủ 20)
+            // --- CPU (10 món) ---
+            { cat: 'cpu', name: 'Intel Core i3-12100F Chính hãng', price: '2.100.000đ', img: 'https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i5-12400F Tray', price: '3.250.000đ', img: 'https://m.media-amazon.com/images/I/51Xf7S2+0cL._AC_SL1000_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i5-13400F', price: '4.950.000đ', img: 'https://m.media-amazon.com/images/I/51p6K-MvGmL._AC_SL1200_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i7-13700K', price: '9.400.000đ', img: 'https://m.media-amazon.com/images/I/61pU8-MvGmL._AC_SL1200_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i9-14900K', price: '15.500.000đ', img: 'https://m.media-amazon.com/images/I/616L+C9K3EL._AC_SL1200_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i5-14600K', price: '7.800.000đ', img: 'https://m.media-amazon.com/images/I/61bU8-MvGmL._AC_SL1200_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i7-14700K', price: '10.800.000đ', img: 'https://m.media-amazon.com/images/I/61pU8-MvGmL._AC_SL1200_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i3-14100F', price: '2.850.000đ', img: 'https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i9-13900KS', price: '14.200.000đ', img: 'https://m.media-amazon.com/images/I/616L+C9K3EL._AC_SL1200_.jpg' },
+            { cat: 'cpu', name: 'Intel Core i5-13600K', price: '7.200.000đ', img: 'https://m.media-amazon.com/images/I/51p6K-MvGmL._AC_SL1200_.jpg' }
         ];
-
-        // Hàm giả lập thêm dữ liệu cho đủ 20 mỗi loại để bạn thấy trang web đầy đủ
-        const categories = ['vga', 'monitor', 'gear', 'cpu'];
-        categories.forEach(c => {
-            const currentCount = products.filter(p => p.cat === c).length;
-            for(let i = currentCount + 1; i <= 20; i++) {
-                products.push({
-                    cat: c,
-                    name: `${c.toUpperCase()} Premium Model SH-${i}`,
-                    price: `${(i*500)+1000}.000đ`,
-                    img: `https://via.placeholder.com/200x180/000/00d2ff?text=${c.toUpperCase()}+${i}`
-                });
-            }
-        });
 
         function render(items) {
             document.getElementById('displayGrid').innerHTML = items.map(p => `
@@ -162,7 +164,7 @@
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
             render(c === 'all' ? products : products.filter(p => p.cat === c));
-            document.getElementById('catTitle').innerText = (c === 'all' ? 'Tất cả sản phẩm' : `Danh mục: ${c}`);
+            document.getElementById('catTitle').innerText = (c === 'all' ? 'Tất cả sản phẩm' : `Danh mục: ${c.toUpperCase()}`);
         }
 
         document.getElementById('searchInput').addEventListener('input', (e) => {
