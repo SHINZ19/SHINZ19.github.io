@@ -3,120 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHINZ PC - Hi-End Computer Store</title>
+    <title>QUẢN TRỊ VIÊN - SHINZ PC STORE</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { 
-            --primary-color: #00d2ff; /* Màu xanh Cyan giống banner */
-            --dark-bg: #0a0a0a; 
-            --accent-color: #0080ff;
+            --primary-color: #00d2ff; /* Màu xanh Cyan từ banner của bạn */
+            --dark-bg: #0d0d0d; 
         }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; }
         
-        /* Navbar chuyên nghiệp */
-        .navbar { background-color: var(--dark-bg) !important; border-bottom: 2px solid var(--primary-color); }
-        .navbar-brand { color: white !important; font-weight: 800; letter-spacing: 1px; }
-        .navbar-brand span { color: var(--primary-color); }
+        /* Menu điều hướng */
+        .navbar { background-color: var(--dark-bg) !important; border-bottom: 3px solid var(--primary-color); }
+        .navbar-brand { color: white !important; font-weight: 900; font-size: 1.5rem; }
 
-        /* BANNER SHINZ PC MỚI */
+        /* BANNER CHÍNH - SỬ DỤNG ẢNH BẠN GỬI */
         .hero-banner { 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1920&q=80'); 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        url('banner-pc.jpg'); /* Tên file ảnh bạn vừa upload */
             background-size: cover; 
             background-position: center;
-            padding: 130px 0; 
+            padding: 150px 0; 
             color: white; 
-            text-align: center; 
-            border-bottom: 5px solid var(--primary-color);
+            text-align: center;
         }
         .hero-banner h1 { 
-            font-size: 4.5rem; 
+            font-size: 5rem; 
             font-weight: 900; 
-            text-transform: uppercase;
-            letter-spacing: 10px;
-            text-shadow: 0 0 20px var(--primary-color);
-            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--primary-color);
+            margin-bottom: 20px;
         }
-        .hero-banner p { font-size: 1.5rem; font-weight: 300; opacity: 0.9; }
 
-        /* Card sản phẩm Gaming */
-        .product-card { 
-            background: white; 
+        /* Danh sách sản phẩm PC */
+        .pc-card { 
+            border: none; 
             border-radius: 15px; 
-            overflow: hidden; 
-            transition: 0.4s; 
-            border: 1px solid #eee; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-        }
-        .product-card:hover { transform: translateY(-12px); border-color: var(--primary-color); box-shadow: 0 10px 25px rgba(0,210,255,0.2); }
-        .product-img { width: 100%; height: 220px; object-fit: cover; }
-        .price-tag { color: #ff4757; font-weight: bold; font-size: 1.3rem; }
-        
-        .btn-buy { 
-            background-color: var(--dark-bg); 
-            color: white; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            border: 2px solid var(--dark-bg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
             transition: 0.3s;
+            overflow: hidden;
         }
-        .btn-buy:hover { background-color: transparent; color: var(--dark-bg); border-color: var(--primary-color); }
+        .pc-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,210,255,0.3); }
+        .price { color: #ff4757; font-size: 1.4rem; font-weight: bold; }
         
-        .zalo-float { position: fixed; bottom: 20px; right: 20px; background-color: #0084ff; color: white; border-radius: 50%; width: 60px; height: 60px; text-align: center; line-height: 60px; font-size: 30px; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        /* Nút mua hàng */
+        .btn-order { background-color: var(--primary-color); color: black; font-weight: bold; border-radius: 10px; }
+        .btn-order:hover { background-color: #008cba; color: white; }
     </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">SHINZ <span>PC</span></a>
+            <a class="navbar-brand" href="#">SHINZ PC <small class="fs-6 fw-light">(Admin Mode)</small></a>
         </div>
     </nav>
 
     <header class="hero-banner">
         <div class="container">
-            <h1 class="animate__animated animate__fadeInDown">SHINZ PC</h1>
-            <p>COMPONENTS & GAMING GEAR ACCESSORIES</p>
-            <a href="#sanpham" class="btn btn-primary btn-lg mt-4 px-5 rounded-pill fw-bold" style="background-color: var(--primary-color); border:none; color:black;">MUA NGAY</a>
+            <h1>SHINZ PC</h1>
+            <p class="fs-4">HỆ THỐNG CUNG CẤP LINH KIỆN MÁY TÍNH HI-END</p>
+            <div class="mt-4">
+                <span class="badge bg-primary p-2 me-2">VGA</span>
+                <span class="badge bg-info p-2 me-2 text-dark">MAINBOARD</span>
+                <span class="badge bg-warning p-2 text-dark">GAMING GEAR</span>
+            </div>
         </div>
     </header>
 
-    <div class="container my-5" id="sanpham">
-        <h2 class="text-center mb-5 fw-bold">LINH KIỆN NỔI BẬT</h2>
+    <div class="container my-5">
+        <h2 class="text-center mb-5 fw-bold text-dark">DANH MỤC LINH KIỆN</h2>
         <div class="row g-4">
             
             <div class="col-md-4">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500&q=60" class="product-img">
-                    <div class="p-3 text-center">
-                        <h5>Mainboard Gaming Z790</h5>
-                        <p class="price-tag">8.450.000đ</p>
-                        <button class="btn btn-buy w-100" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Mainboard Gaming Z790">ĐẶT HÀNG</button>
+                <div class="card pc-card">
+                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="VGA">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">VGA RTX 4090 Rog Strix</h5>
+                        <p class="price">45.990.000đ</p>
+                        <button class="btn btn-order w-100" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="VGA RTX 4090">MUA NGAY</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=60" class="product-img">
-                    <div class="p-3 text-center">
-                        <h5>VGA RTX 4070 Ti</h5>
-                        <p class="price-tag">22.320.000đ</p>
-                        <button class="btn btn-buy w-100" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="VGA RTX 4070 Ti">ĐẶT HÀNG</button>
+                <div class="card pc-card">
+                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="CPU">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">CPU Core i9-14900K</h5>
+                        <p class="price">15.500.000đ</p>
+                        <button class="btn btn-order w-100" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="CPU i9-14900K">MUA NGAY</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=60" class="product-img">
-                    <div class="p-3 text-center">
-                        <h5>Bàn phím Cơ RGB</h5>
-                        <p class="price-tag">1.150.000đ</p>
-                        <button class="btn btn-buy w-100" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Bàn phím Cơ RGB">ĐẶT HÀNG</button>
+                <div class="card pc-card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Gear">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Phím Cơ Custom GMMK Pro</h5>
+                        <p class="price">4.200.000đ</p>
+                        <button class="btn btn-order w-100" data-bs-toggle="modal" data-bs-target="#orderModal" data-product="Phím Cơ GMMK Pro">MUA NGAY</button>
                     </div>
                 </div>
             </div>
@@ -126,26 +114,26 @@
 
     <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content border-0">
+            <div class="modal-content">
                 <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title">Xác Nhận Đặt Hàng PC</h5>
+                    <h5 class="modal-title">ĐƠN HÀNG MỚI</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form id="orderForm">
                         <div class="mb-3">
-                            <label class="form-label fw-bold text-primary">Linh kiện đã chọn:</label>
-                            <input type="text" class="form-control bg-light fw-bold" id="productName" readonly>
+                            <label class="form-label fw-bold">Linh kiện đã chọn:</label>
+                            <input type="text" class="form-control bg-light" id="productName" readonly>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Họ tên khách hàng:</label>
-                            <input type="text" class="form-control" placeholder="Nguyễn Văn A" required>
+                            <label class="form-label">Tên khách hàng:</label>
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Số điện thoại:</label>
-                            <input type="tel" class="form-control" placeholder="090x xxx xxx" required>
+                            <input type="tel" class="form-control" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 fw-bold" style="background-color: var(--primary-color); border:none; color:black;">XÁC NHẬN MUA</button>
+                        <button type="submit" class="btn btn-order w-100 py-2">GỬI ĐƠN HÀNG CHO QUẢN TRỊ VIÊN</button>
                     </form>
                 </div>
             </div>
@@ -153,11 +141,10 @@
     </div>
 
     <footer class="bg-dark text-white text-center py-4 mt-5">
-        <p class="mb-0 text-muted">&copy; 2026 SHINZ PC - Build Your Dream PC</p>
+        <p class="mb-0 text-muted">Hệ thống quản lý bởi <strong>SHINZ19</strong> - &copy; 2026</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
         const orderModal = document.getElementById('orderModal');
         orderModal.addEventListener('show.bs.modal', event => {
@@ -169,7 +156,7 @@
 
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Chúc mừng! Đơn hàng linh kiện PC của bạn đã được gửi đi thành công.');
+            alert('Thông báo quản lý: Một đơn hàng mới đã được gửi vào hệ thống thành công!');
             location.reload();
         });
     </script>
