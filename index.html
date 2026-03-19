@@ -1,1 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINZ Shop - Đồ Án Cơ Sở</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        /* Navbar */
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #333 !important;
+        }
+        .nav-link {
+            color: #555 !important;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #ee4d2d !important; /* Màu cam Shopee cho nổi bật */
+        }
+        /* Banner */
+        .hero-banner {
+            background-color: #333;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        /* Product Card */
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: 1px solid #eee;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Giúp ảnh không bị méo */
+        }
+        .product-body {
+            padding: 15px;
+        }
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            height: 48px; /* Giới hạn chiều cao tên */
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .product-price {
+            color: #ee4d2d;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .btn-add-cart {
+            width: 100%;
+            background-color: white;
+            color: #ee4d2d;
+            border: 1px solid #ee4d2d;
+            margin-top: 10px;
+        }
+        .btn-add-cart:hover {
+            background-color: #ee4d2d;
+            color: white;
+        }
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: rgba(255,255,255,0.7);
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">SHINZ.github.io</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-4">
+                    <li class="nav-item"><a class="nav-link active" href="#">Trang Chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sản Phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Liên Hệ</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-search me-3 fs-5 text-muted" style="cursor: pointer;"></i>
+                    <i class="fas fa-shopping-cart fs-5 text-muted position-relative" style="cursor: pointer;">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.7rem;">2</span>
+                    </i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-banner">
+        <div class="container">
+            <h1 class="display-4 fw-bold">CHÀO MỪNG ĐẾN VỚI SHINZ SHOP</h1>
+            <p class="lead">Hệ thống phân phối sản phẩm chính hãng, chất lượng cao.</p>
+            <a href="#" class="btn btn-warning btn-lg px-4 fw-bold">MUA NGAY</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="text-center mb-4 fw-bold">SẢN PHẨM MỚI NHẤT</h2>
+        <div class="row g-4">
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x300?text=Sản+Phẩm+1" alt="Sản phẩm 1" class="product-img">
+                    <div class="product-body">
+                        <h5 class="product-title">Tên Sản Phẩm Bán Hàng Số 1 Siêu Cấp</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="product-price">120.000đ</span>
+                        </div>
+                        <button class="btn btn-add-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x300?text=Sản+Phẩm+2" alt="Sản phẩm 2" class="product-img">
+                    <div class="product-body">
+                        <h5 class="product-title">Sản Phẩm Khác Đẹp Mắt</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="product-price">99.000đ</span>
+                        </div>
+                        <button class="btn btn-add-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x300?text=Sản+Phẩm+3" alt="Sản phẩm 3" class="product-img">
+                    <div class="product-body">
+                        <h5 class="product-title">Tên Sản Phẩm Thứ Ba Rất Dài Để Test</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="product-price">250.000đ</span>
+                        </div>
+                        <button class="btn btn-add-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x300?text=Sản+Phẩm+4" alt="Sản phẩm 4" class="product-img">
+                    <div class="product-body">
+                        <h5 class="product-title">Sản Phẩm Cuối Cùng</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="product-price">50.000đ</span>
+                        </div>
+                        <button class="btn btn-add-cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <h5>SHINZ SHOP</h5>
+            <p>Địa chỉ: Cần Thơ, Việt Nam</p>
+            <p>Đồ Án Cơ Sở - Sinh viên: Nguyễn Tuấn Anh - MSSV: 227120</p>
+            <p class="mb-0">&copy; 2026 SHINZ.github.io. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
