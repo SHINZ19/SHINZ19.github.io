@@ -3,60 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ĐĂNG KÝ TÀI KHOẢN - SHINZ PC STORE</title>
+    <title>SHINZ PC - High Performance Store</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { 
-            --primary-color: #00d2ff; /* Màu xanh Cyan giống logo */
-            --dark-bg: #0d0d0d; 
-        }
+        :root { --primary-color: #00d2ff; --dark-bg: #0d0d0d; }
         body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; }
         
-        /* NAVBAR CHÍNH THỨC CÓ LOGO CHỮ Z VÀ THANH TÌM KIẾM */
-        .navbar { 
-            background-color: var(--dark-bg) !important; 
-            border-bottom: 2px solid var(--primary-color); 
-            padding: 8px 0; 
-        }
-        .navbar-brand { 
-            color: white !important; 
-            font-weight: 800; 
-            font-size: 1.6rem; 
-            display: flex; align-items: center; 
-            margin-right: 30px; 
-        }
-        
-        /* Hiệu ứng logo tròn Z của bạn */
-        .logo-z-tech { width: 50px; height: 50px; border: 2px solid var(--primary-color); border-radius: 50%; object-fit: cover; margin-right: 12px; }
+        /* NAVBAR NÂNG CẤP THEO MẪU BẠN GỬI */
+        .navbar { background-color: var(--dark-bg) !important; border-bottom: 2px solid var(--primary-color); padding: 12px 0; }
+        .navbar-brand { color: white !important; font-weight: 800; display: flex; align-items: center; }
+        .logo-z { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary-color); margin-right: 10px; }
 
-        /* Thanh tìm kiếm bên cạnh logo */
-        .search-container { max-width: 400px; width: 100%; margin-right: auto; }
-        .search-input { border-radius: 20px 0 0 20px; border-color: #ddd; }
-        .btn-search { border-radius: 0 20px 20px 0; background-color: var(--primary-color); border-color: var(--primary-color); color: black; }
+        /* THANH TÌM KIẾM */
+        .search-box { max-width: 400px; width: 100%; margin: 0 20px; }
+        .search-box .form-control { border-radius: 20px 0 0 20px; border: none; }
+        .btn-search { border-radius: 0 20px 20px 0; background: var(--primary-color); border: none; color: black; }
 
-        /* Giao diện Đăng ký (Register Container) */
-        .register-container { 
-            max-width: 600px; 
-            margin: 60px auto; 
-            padding: 40px; 
-            background: white; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        /* ICON TIỆN ÍCH: TÀI KHOẢN & GIỎ HÀNG */
+        .nav-icons { display: flex; align-items: center; gap: 20px; color: white; }
+        .nav-icons a { color: white; text-decoration: none; font-size: 0.9rem; cursor: pointer; }
+        .cart-badge { background: #ff4757; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; position: absolute; top: -5px; right: -10px; }
+
+        /* GIỮ BANNER CŨ */
+        .hero-banner { 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1920'); 
+            background-size: cover; background-position: center; padding: 100px 0; color: white; text-align: center;
         }
-        .register-header { text-align: center; margin-bottom: 30px; }
-        .form-control-lg { font-size: 1rem; padding: 12px 15px; }
-        .btn-register { background-color: var(--primary-color); color: black; font-weight: bold; border-radius: 8px; transition: 0.3s; padding: 12px; }
-        
-        /* Đăng nhập bằng mạng xã hội */
-        .social-login { text-align: center; margin-top: 25px; border-top: 1px solid #ddd; padding-top: 15px; }
-        .btn-social { padding: 10px; border-radius: 8px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 10px; }
-        .btn-fb { background-color: #1877f2; color: white; border-color: #1877f2; }
-        .btn-fb:hover { background-color: #1565c0; border-color: #1565c0; }
-        .btn-email { background-color: transparent; border: 1px solid #ddd; color: #555; }
-        .btn-email:hover { background-color: #f0f0f0; }
+
+        .pc-card { border: none; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; height: 100%; }
+        .pc-card:hover { transform: translateY(-5px); }
+        .btn-add-cart { background: var(--primary-color); color: black; font-weight: bold; width: 100%; border-radius: 8px; }
     </style>
 </head>
 <body>
@@ -64,61 +43,79 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="logo.jpg" alt="Logo Z" class="logo-z-tech">
-                <span>SHINZ PC</span>
+                <img src="logo.jpg" alt="Logo" class="logo-z"> <span>SHINZ PC</span>
             </a>
 
-            <div class="search-container d-flex">
-                <input type="text" class="form-control search-input" placeholder="Tìm tên linh kiện, phụ kiện PC...">
-                <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
+            <div class="search-box d-none d-md-flex">
+                <input type="text" class="form-control" placeholder="Tìm linh kiện PC...">
+                <button class="btn btn-search"><i class="fas fa-search"></i></button>
             </div>
 
-            <div class="ms-auto d-flex align-items-center text-white fs-6">
-                <i class="fas fa-user-plus me-2 text-primary"></i> ĐĂNG KÝ
+            <div class="nav-icons ms-auto">
+                <a data-bs-toggle="modal" data-bs-target="#accountModal">
+                    <i class="fas fa-user-circle fa-lg me-1"></i> Tài khoản
+                </a>
+                <a class="position-relative">
+                    <i class="fas fa-shopping-basket fa-lg"></i> Giỏ hàng
+                    <span class="cart-badge" id="cart-count">0</span>
+                </a>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="register-container">
-            <div class="register-header">
-                <i class="fas fa-id-card fa-3x text-primary mb-3"></i>
-                <h2 class="fw-bold">TẠO TÀI KHOẢN PC MEMBER</h2>
-                <p class="text-muted">Gia nhập cộng đồng SHINZ PC để nhận ưu đãi</p>
-            </div>
+    <header class="hero-banner">
+        <div class="container">
+            <h1 class="display-3 fw-bold">SHINZ PC</h1>
+            <p class="lead">COMPONENTS & ACCESSORIES</p>
+        </div>
+    </header>
 
-            <form id="registerForm">
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Tên đăng nhập:</label>
-                    <input type="text" class="form-control form-control-lg" placeholder="Ví dụ: shinz_member" required>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Nhập mật khẩu:</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Tối thiểu 8 ký tự" required>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Nhập lại mật khẩu:</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Phải khớp với mật khẩu trên" required>
-                </div>
-
-                <button type="submit" class="btn btn-register btn-lg w-100 mt-3 shadow">TẠO TÀI KHOẢN NGAY</button>
-            </form>
-
-            <div class="social-login">
-                <p class="text-muted mb-3">Hoặc đăng ký nhanh bằng:</p>
-                <div class="row">
-                    <div class="col-md-6">
-                        <button class="btn btn-social btn-fb"><i class="fab fa-facebook-f me-2"></i> Facebook</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-social btn-email"><i class="fas fa-envelope me-2"></i> Email</button>
+    <div class="container my-5">
+        <h2 class="text-center mb-5 fw-bold">DANH MỤC SẢN PHẨM</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card pc-card p-3 text-center">
+                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=500" class="card-img-top rounded">
+                    <div class="card-body">
+                        <h5 class="fw-bold">VGA RTX 4090 Rog Strix</h5>
+                        <p class="text-danger fw-bold fs-5">45.990.000đ</p>
+                        <button class="btn btn-add-cart" onclick="addToCart()">THÊM VÀO GIỎ</button>
                     </div>
                 </div>
             </div>
-            
-            <p class="text-center mt-4 text-muted">Đã có tài khoản? <a href="#" class="text-primary fw-bold">Đăng nhập</a></p>
+            </div>
+    </div>
+
+    <div class="modal fade" id="accountModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">ĐĂNG KÝ THÀNH VIÊN</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tên đăng nhập</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Mật khẩu</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nhập lại mật khẩu</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-add-cart w-100 py-2">TẠO TÀI KHOẢN</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="small text-muted">Hoặc đăng ký bằng</p>
+                        <button class="btn btn-outline-primary btn-sm me-2"><i class="fab fa-facebook"></i> Facebook</button>
+                        <button class="btn btn-outline-danger btn-sm"><i class="fas fa-envelope"></i> Email</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -128,11 +125,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thông báo: Chức năng đăng ký đang được tích hợp. Vui lòng quay lại sau.');
-            location.reload();
-        });
+        // Xử lý giỏ hàng đơn giản
+        let count = 0;
+        function addToCart() {
+            count++;
+            document.getElementById('cart-count').innerText = count;
+            alert("Đã thêm sản phẩm vào giỏ hàng!");
+        }
     </script>
 </body>
 </html>
