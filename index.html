@@ -1,271 +1,501 @@
 <!DOCTYPE html>
+
 <html lang="vi">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>SHINZ PC - Đồ án Kỹ năng nghề nghiệp</title>
+
     
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+
+
     <style>
+
         :root { --primary: #00d2ff; --dark: #0d0d0d; --bg-light: #f8f9fa; }
+
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg-light); margin: 0; padding: 0; }
+
         
+
         /* 1. TOP INFO BAR */
+
         .top-info-bar { background: #1a1a1a; color: #ccc; font-size: 0.85rem; padding: 10px 0; border-bottom: 1px solid #333; }
+
         .top-info-bar a { color: var(--primary); text-decoration: none; }
+
         
+
         /* 2. MAIN HEADER (BANNER ĐỘNG) */
+
         .main-header { 
+
             background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1920'); 
+
             background-size: cover; background-position: center; background-attachment: fixed;
+
             height: 250px; color: white; text-align: center; border-bottom: 3px solid var(--primary); 
+
             position: sticky; top: -100px; z-index: 999; transition: all 0.4s ease-in-out; overflow: hidden;
+
             display: flex; align-items: center; justify-content: center;
+
         }
+
+
 
         .main-header.scrolled { height: 70px; top: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1920'); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+
         .brand-center { font-size: 4rem; font-weight: 800; letter-spacing: 10px; color: white; text-shadow: 0 0 15px var(--primary); transition: all 0.4s ease-in-out; }
+
         .main-header.scrolled .brand-center { font-size: 1.8rem; letter-spacing: 3px; }
 
+
+
         /* 3. NAVBAR */
+
         .navbar-custom { background: transparent; padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; position: absolute; bottom: 0; }
+
         .logo-box { display: flex; align-items: center; text-decoration: none; color: white !important; }
+
         
+
         /* ========================================================================= */
-        /* PHẦN SỬA: LOGO CHỮ Z LIÊN QUAN ĐẾN PC & CÔNG NGHỆ */
+
+        /* PHẦN SỬA: LOGO CHỮ Z ĐẸP HƠN */
+
         /* ========================================================================= */
+
         .logo-z { 
-            width: 48px; 
-            height: 48px; 
+
+            width: 45px; 
+
+            height: 45px; 
+
             border-radius: 50%; 
-            /* Gradient màu Metal Tech */
-            background: radial-gradient(circle, #1a1a1a 30%, #00d2ff 100%);
-            color: #fff; 
+
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); /* Hiệu ứng màu gradient */
+
+            color: white; 
+
             font-weight: 900; 
+
             display: flex; 
+
             align-items: center; 
+
             justify-content: center; 
+
             margin-right: 12px;
-            font-size: 1.6rem;
-            /* Hiệu ứng viền kép giống quạt tản nhiệt hoặc chip xử lý */
-            border: 2px solid #fff;
-            outline: 2px solid var(--primary);
-            box-shadow: 0 0 15px var(--primary), inset 0 0 10px var(--primary);
-            position: relative;
-            font-family: 'Courier New', Courier, monospace; /* Font kiểu máy tính */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
 
-        /* Thêm dấu gạch nhỏ bên cạnh chữ Z để giống con trỏ terminal */
-        .logo-z::after {
-            content: '_';
-            font-size: 1rem;
-            position: absolute;
-            right: 8px;
-            bottom: 8px;
-            animation: blink 1s infinite;
-            color: var(--primary);
-        }
+            font-size: 1.4rem;
 
-        @keyframes blink { 50% { opacity: 0; } }
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.6); /* Hiệu ứng phát sáng (Glow) */
+
+            border: 2px solid white;
+
+            transition: 0.3s;
+
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+
+        }
 
         .logo-box:hover .logo-z {
-            transform: scale(1.15) rotate(15deg);
-            background: radial-gradient(circle, #00d2ff 10%, #1a1a1a 100%);
-            box-shadow: 0 0 25px var(--primary), inset 0 0 15px #fff;
-            color: #000;
+
+            transform: rotate(360deg) scale(1.1); /* Hiệu ứng xoay khi rê chuột */
+
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.9);
+
         }
+
         /* ========================================================================= */
+
         
+
         /* HIỂN THỊ SẢN PHẨM */
+
         .all-components-title { font-size: 1.5rem; font-weight: bold; text-align: center; margin: 25px 0; position: relative; }
+
         .all-components-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--primary); margin: 8px auto; }
+
         .pc-card { border: none; border-radius: 12px; transition: 0.3s; height: 100%; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
         .pc-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,210,255,0.2); }
+
         .pc-card img { height: 180px; object-fit: contain; padding: 15px; }
+
         .price-tag { color: #ff4757; font-weight: bold; font-size: 1.1rem; }
 
+
+
         /* PAGE SWITCH */
+
         .page-content { display: none; padding-top: 30px; }
+
         .active-page { display: block; }
+
         .cart-badge { background: #ff4757; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; position: absolute; top: 0; right: 0; }
 
+
+
         /* CHATBOT */
+
         .chatbot-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+
         .chat-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--primary); color: black; border: none; font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+
         .chat-box { width: 300px; height: 400px; background: white; position: absolute; bottom: 70px; right: 0; border-radius: 10px; display: none; flex-direction: column; box-shadow: 0 5px 25px rgba(0,0,0,0.2); overflow: hidden; }
+
         .chat-header { background: var(--dark); color: white; padding: 10px; font-weight: bold; }
+
         .chat-messages { flex-grow: 1; padding: 10px; overflow-y: auto; font-size: 0.9rem; }
+
         .chat-input { display: flex; border-top: 1px solid #eee; }
+
         .chat-input input { flex-grow: 1; border: none; padding: 10px; outline: none; }
+
     </style>
+
 </head>
+
 <body>
 
+
+
 <div class="top-info-bar">
+
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
+
         <div><i class="fas fa-phone-alt"></i> Hotline: 0392966091 | <i class="fas fa-clock"></i> 9:00 - 21:00</div>
+
         <div><i class="fas fa-map-marker-alt"></i> Khu vực Thới Hòa 1, Cần Thơ <a href="#" class="ms-2 btn btn-outline-info btn-sm">Google Map</a></div>
+
     </div>
+
 </div>
+
+
 
 <header class="main-header" id="dynamicHeader">
+
     <div class="brand-center">SHINZ PC</div>
+
 </header>
 
+
+
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+
     <div class="container">
+
         <a class="logo-box" href="#" onclick="showPage('home')">
+
             <div class="logo-z">Z</div><span class="fw-bold fs-5">SHINZ PC</span>
+
         </a>
+
         <div class="d-flex flex-grow-1 mx-lg-5 my-2 my-lg-0">
+
             <input type="text" id="searchInput" class="form-control rounded-pill px-4" placeholder="Tìm tên sản phẩm..." onkeyup="searchProduct()">
+
         </div>
+
         <div class="d-flex align-items-center">
+
             <a href="#" class="nav-link text-white me-3" onclick="showPage('account')"><i class="fas fa-user-plus"></i> Tài khoản</a>
+
             <div class="position-relative" onclick="showPage('cart')" style="cursor:pointer">
+
                 <i class="fas fa-shopping-cart fa-lg text-white"></i><span id="cart-count" class="cart-badge">0</span>
+
             </div>
+
         </div>
+
     </div>
+
 </nav>
 
+
+
 <div class="container" id="main-content-wrapper">
+
     <div id="page-home" class="page-content active-page">
+
         <div class="all-components-title">TẤT CẢ LINH KIỆN</div>
+
         <div class="row g-4" id="productList"></div>
+
     </div>
+
+
 
     <div id="page-account" class="page-content py-5">
+
         <div class="row justify-content-center">
+
             <div class="col-md-5 bg-white p-4 rounded shadow">
+
                 <h4 class="fw-bold text-center mb-4">ĐĂNG KÝ TÀI KHOẢN</h4>
+
                 <input type="text" class="form-control mb-3" placeholder="Họ và tên">
+
                 <input type="email" class="form-control mb-3" placeholder="Email">
+
                 <input type="password" class="form-control mb-3" placeholder="Mật khẩu">
+
                 <button class="btn btn-primary w-100 mb-2" onclick="fakeLogin()">ĐĂNG KÝ</button>
+
                 <button class="btn btn-outline-primary w-100" onclick="fakeLogin()"><i class="fab fa-facebook"></i> Facebook</button>
+
             </div>
+
         </div>
+
     </div>
+
+
 
     <div id="page-cart" class="page-content py-5">
+
         <div class="row">
+
             <div class="col-lg-7">
+
                 <h4 class="fw-bold mb-4">GIỎ HÀNG CỦA BẠN</h4>
+
                 <div id="cart-items" class="bg-white p-3 rounded shadow-sm"></div>
+
             </div>
+
             <div class="col-lg-5">
+
                 <div class="bg-white p-4 rounded shadow">
+
                     <h5 class="fw-bold mb-3">THANH TOÁN</h5>
+
                     <input type="text" class="form-control mb-2" placeholder="Họ tên">
+
                     <input type="text" class="form-control mb-2" placeholder="Số điện thoại">
+
                     
+
                     <label class="small fw-bold mt-2">Khu vực giao hàng:</label>
+
                     <select class="form-select mb-3" id="shipping-method" onchange="calcTotal()">
+
                         <option value="0">Cùng phường (Free Ship)</option>
+
                         <option value="20000">Ngoài phường (Dưới 5km - 20,000đ)</option>
+
                         <option value="40000">Ngoài phường (Trên 5km - 40,000đ)</option>
+
                     </select>
+
                     
+
                     <div class="d-flex justify-content-between"><span>Tạm tính:</span> <b id="subtotal">0đ</b></div>
+
                     <div class="d-flex justify-content-between text-primary"><span>Phí vận chuyển:</span> <b id="ship-fee">0đ</b></div>
+
                     <div class="d-flex justify-content-between text-muted"><span>Phí sàn & VAT (2%):</span> <b id="platform-fee">0đ</b></div>
+
                     <hr>
+
                     <div class="d-flex justify-content-between mb-4"><span class="h5">TỔNG CỘNG:</span> <b id="final-total" class="h4 text-danger">0đ</b></div>
+
                     <button class="btn btn-success w-100 py-3 fw-bold" onclick="alert('Đặt hàng thành công!')">XÁC NHẬN ĐƠN HÀNG</button>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+
+
 
 <div class="chatbot-container">
+
     <div class="chat-box" id="chatBox">
+
         <div class="chat-header">SHINZ AI Support</div>
+
         <div class="chat-messages" id="chatMessages"></div>
+
         <div class="chat-input"><input type="text" id="chatInput"><button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div>
+
     </div>
+
     <button class="chat-btn" onclick="toggleChat()"><i class="fas fa-robot"></i></button>
+
 </div>
 
+
+
 <script>
-    // JS giữ nguyên hoàn toàn như cũ của em
+
     const products = [
+
         { id: 1, name: "Intel Core i3-12100F", price: 2150000, img: "https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg", cat: "CPU" },
+
         { id: 2, name: "RTX 4060 Asus Dual", price: 8450000, img: "https://dlcdnwebimgs.asus.com/gain/B574F96E-10C5-4C3D-B446-2D87F25D6E18", cat: "GPU" },
+
         { id: 3, name: "Phím Cơ Akko 3087", price: 1250000, img: "https://akkogear.com.vn/wp-content/uploads/2020/12/3087-v2-steam-engine-1.jpg", cat: "Gear" },
+
         { id: 4, name: "Màn Hình Asus TUF 27\"", price: 5150000, img: "https://dlcdnwebimgs.asus.com/gain/0D4F4F6C-27B4-406F-9C9D-999B7F1C9F9C", cat: "Monitor" }
+
     ];
+
+
 
     let cart = [];
 
+
+
     function calcTotal() {
+
         let subtotal = cart.reduce((sum, p) => sum + p.price, 0);
+
         let shipFee = parseInt(document.getElementById('shipping-method').value);
+
         let platformFee = subtotal * 0.02;
+
         let finalTotal = subtotal + shipFee + platformFee;
+
+
+
         document.getElementById('subtotal').innerText = subtotal.toLocaleString() + "đ";
+
         document.getElementById('ship-fee').innerText = shipFee.toLocaleString() + "đ";
+
         document.getElementById('platform-fee').innerText = platformFee.toLocaleString() + "đ";
+
         document.getElementById('final-total').innerText = finalTotal.toLocaleString() + "đ";
+
     }
+
+
 
     window.onscroll = function() {
+
         var header = document.getElementById("dynamicHeader");
+
         if (document.documentElement.scrollTop > 80) {
+
             header.classList.add("scrolled");
+
         } else {
+
             header.classList.remove("scrolled");
+
         }
+
     };
 
+
+
     function renderProducts(list) {
+
         document.getElementById('productList').innerHTML = list.map(p => `
+
             <div class="col-6 col-md-3"><div class="card pc-card">
+
                 <img src="${p.img}" class="card-img-top">
+
                 <div class="card-body text-center">
+
                     <h6 class="fw-bold small">${p.name}</h6>
+
                     <p class="price-tag">${p.price.toLocaleString()}đ</p>
+
                     <button class="btn btn-primary btn-sm w-100" onclick="addToCart(${p.id})">Thêm vào giỏ</button>
+
                 </div>
+
             </div></div>`).join('');
+
     }
+
+
 
     function addToCart(id) {
+
         cart.push(products.find(x => x.id === id));
+
         document.getElementById('cart-count').innerText = cart.length;
+
         alert("Đã thêm vào giỏ hàng!");
+
     }
+
+
 
     function renderCart() {
+
         const list = document.getElementById('cart-items');
+
         list.innerHTML = cart.map((p, i) => `
+
             <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+
                 <img src="${p.img}" width="50" class="me-3">
+
                 <div class="flex-grow-1"><b>${p.name}</b><br><span class="text-danger">${p.price.toLocaleString()}đ</span></div>
+
                 <button class="btn btn-sm text-muted" onclick="removeCart(${i})">Xóa</button>
+
             </div>`).join('');
+
         calcTotal();
+
     }
+
+
 
     function removeCart(idx) { cart.splice(idx, 1); document.getElementById('cart-count').innerText = cart.length; renderCart(); }
+
     function showPage(id) { 
+
         document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
+
         document.getElementById('page-' + id).classList.add('active-page');
+
         if(id === 'cart') renderCart();
+
         window.scrollTo(0,0);
-    }
-    function fakeLogin() { alert("Đăng nhập thành công!"); showPage('home'); }
-    function toggleChat() { let b = document.getElementById('chatBox'); b.style.display = b.style.display === 'flex' ? 'none' : 'flex'; }
-    function searchProduct() {
-        let key = document.getElementById('searchInput').value.toLowerCase();
-        renderProducts(products.filter(p => p.name.toLowerCase().includes(key)));
+
     }
 
+    function fakeLogin() { alert("Đăng nhập thành công!"); showPage('home'); }
+
+    function toggleChat() { let b = document.getElementById('chatBox'); b.style.display = b.style.display === 'flex' ? 'none' : 'flex'; }
+
+    function searchProduct() {
+
+        let key = document.getElementById('searchInput').value.toLowerCase();
+
+        renderProducts(products.filter(p => p.name.toLowerCase().includes(key)));
+
+    }
+
+
+
     renderProducts(products);
+
 </script>
+
 </body>
+
 </html>
