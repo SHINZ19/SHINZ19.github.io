@@ -9,6 +9,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
+    :root { --primary: #00d2ff; --bg-body: #f1f3f5; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg-body); padding-bottom: 80px; margin: 0; }
+
+    /* Header & Shop Info */
+    .shop-header { background: white; padding: 20px 15px; border-bottom: 1px solid #eee; }
+    .shop-info-top { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; }
+    .shop-avatar { width: 65px; height: 65px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover; }
+    .shop-name-box h1 { font-size: 1.3rem; font-weight: 800; margin: 0; }
+    .shop-status { font-size: 0.8rem; color: #28a745; display: flex; align-items: center; gap: 5px; }
+
+    /* Search & Banner */
+    .search-box { padding: 10px; background: white; sticky: top; z-index: 99; }
+    .search-input { border-radius: 10px; background: #f0f2f5; border: none; padding: 12px; width: 100%; }
+    .main-banner { margin: 10px; border-radius: 12px; overflow: hidden; height: 160px; }
+    .main-banner img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Blocks giống KingzSmoke */
+    .section-block { background: #e3f2fd; padding: 10px 15px; margin: 15px 0; font-weight: bold; color: #0d47a1; display: flex; justify-content: space-between; }
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 10px; }
+    .product-card { background: white; border-radius: 12px; padding: 10px; border: 1px solid #eee; text-align: center; transition: 0.3s; }
+    .product-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .product-card img { max-height: 120px; object-fit: contain; margin-bottom: 10px; }
+
+    /* Bottom Nav */
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; z-index: 1000; }
+    .nav-btn { text-align: center; color: #666; text-decoration: none; font-size: 0.75rem; position: relative; }
+    .nav-btn.active { color: var(--primary); }
+    .nav-btn i { font-size: 1.3rem; display: block; }
+    .cart-count-badge { position: absolute; top: -5px; right: -5px; background: #ff4757; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; }
+
+    /* Nút hỗ trợ nổi */
+    .support-buttons { position: fixed; bottom: 90px; right: 15px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
+    .support-btn { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 3px 10px rgba(0,0,0,0.2); text-decoration: none; font-size: 18px; }
+    .zalo-bg { background: #007bff; }
+    .mess-bg { background: #0084ff; }
+    .chat-bg { background: #ff4757; }
+
+    /* Chatbox (Giữ nguyên logic của em) */
+    .chat-box { width: 280px; height: 350px; background: white; position: fixed; bottom: 150px; right: 20px; border-radius: 10px; display: none; flex-direction: column; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 1001; }
+    .chat-header { background: #333; color: white; padding: 10px; border-radius: 10px 10px 0 0; }
+    .chat-messages { flex: 1; padding: 10px; overflow-y: auto; font-size: 0.85rem; }
+    .chat-input { display: flex; border-top: 1px solid #eee; }
+    .chat-input input { border: none; padding: 10px; flex: 1; outline: none; }
+    
+    /* Pages */
+    .page-content { display: none; }
+    .page-content.active { display: block; }
+
         /* PHẦN CSS MỚI - BIẾN HÌNH GIỐNG KINGZ SMOKE */
         :root { --primary: #00d2ff; --bg: #f4f6f8; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); padding-bottom: 80px; margin: 0; }
@@ -62,102 +110,69 @@
         /* Ẩn hiện trang */
         .page-content { display: none; min-height: 80vh; }
         .active-page { display: block; }
+
+        /* Nút nổi hỗ trợ (Zalo, Messenger, Chatbot) */
+.support-buttons { position: fixed; bottom: 80px; right: 15px; z-index: 999; display: flex; flex-direction: column; gap: 10px; }
+.support-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s; }
+.zalo-btn { background: #007bff; } /* Màu xanh Zalo */
+.mess-btn { background: #0084ff; } /* Màu xanh Messenger */
+.chat-btn { background: #ff4757; }  /* Màu đỏ Chatbot */
+.support-btn:hover { transform: scale(1.1); color: white; }
     </style>
 </head>
 <body>
-
     <div class="shop-header">
         <div class="shop-info-top">
             <img src="https://img.freepik.com/premium-vector/computer-pc-logo-design-vector-template_612390-394.jpg" class="shop-avatar">
             <div class="shop-name-box">
                 <h1>SHINZ PC</h1>
-                <div class="shop-status"><i class="fas fa-circle"></i> Đang mở cửa (09:00 - 21:00)</div>
+                <div class="shop-status"><i class="fas fa-circle"></i> Đang mở cửa</div>
             </div>
         </div>
-        <div class="mt-2 small text-muted">
-            <i class="fas fa-map-marker-alt"></i> Khu vực Thới Hòa 1, Cần Thơ | <i class="fas fa-phone"></i> 0392.966.091
+        <div class="small text-muted">
+            <div><i class="fas fa-phone-alt"></i> 0392.966.091</div>
+            <div><i class="fas fa-map-marker-alt"></i> Thới Hòa 1, Cần Thơ</div>
         </div>
     </div>
 
     <div class="search-box">
-        <input type="text" class="search-input" id="searchInput" placeholder="Tìm tên linh kiện, CPU, VGA..." onkeyup="searchProduct()">
+        <input type="text" class="search-input" id="searchInput" placeholder="Bạn tìm linh kiện gì?" onkeyup="searchProduct()">
     </div>
 
-    <div id="page-home" class="page-content active-page">
-        <div class="main-banner">
-            <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1000">
+    <div id="main-content">
+        <div id="page-home" class="page-content active">
+             <div class="main-banner"><img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800"></div>
+             <div class="section-block"><span>⚡ LINH KIỆN MỚI</span> <a href="#">Xem tất cả</a></div>
+             <div class="product-grid" id="productList"></div>
         </div>
-
-        <div class="section-block-bg">
-            <span>⚡ LINH KIỆN GAMING</span>
-            <a href="#" style="text-decoration:none; font-size: 0.8rem; color: #666;">Xem tất cả</a>
-        </div>
-
-        <div class="product-grid" id="productList">
-            </div>
+        
+        <div id="page-account" class="page-content"> ... Code cũ của em ... </div>
+        <div id="page-cart" class="page-content"> ... Code cũ của em ... </div>
     </div>
 
-    <div id="page-account" class="page-content py-5 px-3">
-        <div class="bg-white p-4 rounded shadow-sm">
-            <h4 class="fw-bold text-center mb-4">ĐĂNG KÝ THÀNH VIÊN</h4>
-            <input type="text" class="form-control mb-3" placeholder="Họ và tên">
-            <input type="email" class="form-control mb-3" placeholder="Email của bạn">
-            <button class="btn btn-primary w-100" onclick="fakeLogin()">XÁC NHẬN</button>
-        </div>
+    <div class="support-buttons">
+        <a href="https://zalo.me/0392966091" target="_blank" class="support-btn zalo-bg"><i class="fas fa-comment-dots"></i></a>
+        <a href="#" class="support-btn mess-bg"><i class="fab fa-facebook-messenger"></i></a>
+        <div class="support-btn chat-bg" onclick="toggleChat()" style="cursor:pointer"><i class="fas fa-robot"></i></div>
     </div>
 
-    <div id="page-cart" class="page-content py-4 px-3">
-        <h4 class="fw-bold mb-3">Giỏ hàng của bạn</h4>
-        <div id="cart-items" class="mb-3"></div>
-        <div class="bg-white p-3 rounded shadow-sm">
-            <div class="d-flex justify-content-between"><span>Tổng tiền:</span> <b id="final-total" class="text-danger">0đ</b></div>
-            <button class="btn btn-success w-100 mt-3 py-3 fw-bold" onclick="alert('Cảm ơn đã đặt hàng!')">THANH TOÁN NGAY</button>
-        </div>
-    </div>
-
-    <div class="support-float">
-        <a href="https://zalo.me/0392966091" target="_blank" class="float-btn zalo-color">
-            <i class="fas fa-comment-dots"></i>
-        </a>
-        <a href="#" class="float-btn mess-color">
-            <i class="fab fa-facebook-messenger"></i>
-        </a>
-        <button class="float-btn chat-color" onclick="toggleChat()">
-            <i class="fas fa-robot"></i>
-        </button>
-    </div>
-
-    <div class="chat-window" id="chatBox">
-        <div class="chat-head">
-            <span>SHINZ Hỗ Trợ</span>
-            <span style="cursor:pointer" onclick="toggleChat()">×</span>
-        </div>
-        <div id="chatMessages" class="chat-body">
-            <div class="mb-2"><b>AI:</b> Chào em! SHINZ PC có thể giúp gì cho em?</div>
-        </div>
-        <div class="chat-foot">
-            <input type="text" id="chatInput" placeholder="Nhập tin nhắn...">
-            <button class="btn btn-sm btn-primary" onclick="sendMessage()">Gửi</button>
-        </div>
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">SHINZ Hỗ Trợ</div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input"><input type="text" id="chatInput"><button onclick="sendMessage()">Gửi</button></div>
     </div>
 
     <div class="bottom-nav">
-        <a href="#" class="nav-btn active" id="btn-home" onclick="showPage('home', this)">
-            <i class="fas fa-home"></i>Trang chủ
-        </a>
-        <a href="#" class="nav-btn" onclick="toggleChat()">
-            <i class="fas fa-comment-alt"></i>Tin nhắn
-        </a>
-        <a href="#" class="nav-btn" id="btn-account" onclick="showPage('account', this)">
-            <i class="fas fa-user-circle"></i>Tài khoản
-        </a>
-        <a href="#" class="nav-btn" id="btn-cart" onclick="showPage('cart', this)">
-            <i class="fas fa-shopping-basket"></i>Giỏ hàng
-            <span id="cart-count" class="cart-badge">0</span>
-        </a>
+        <a href="#" class="nav-btn active" onclick="showPage('home', this)"><i class="fas fa-home"></i>Trang chủ</a>
+        <a href="#" class="nav-btn"><i class="fas fa-comment-dots"></i>Tin nhắn</a>
+        <a href="#" class="nav-btn" onclick="showPage('account', this)"><i class="fas fa-user"></i>Tài khoản</a>
+        <a href="#" class="nav-btn" onclick="showPage('cart', this)"><i class="fas fa-shopping-cart"></i>Giỏ hàng <span id="cart-count" class="cart-count-badge">0</span></a>
     </div>
 
     <script>
+
+        
+
         // Dán danh sách sản phẩm (products) và logic cũ của em vào đây
         const products = [
             { id: 1, name: "CPU Intel Core i5-12400F", price: 3250000, img: "https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg" },
@@ -226,6 +241,47 @@
 
         // Khởi chạy ban đầu
         renderProducts(products);
+
+        // Hàm gửi tin nhắn (Bổ sung logic cơ bản)
+function sendMessage() {
+    let input = document.getElementById('chatInput');
+    let msg = input.value;
+    if (msg.trim() === "") return;
+    
+    let chatMessages = document.getElementById('chatMessages');
+    chatMessages.innerHTML += `<div class="mb-2 text-end"><b>Bạn:</b> ${msg}</div>`;
+    input.value = "";
+    
+    // Giả lập AI trả lời
+    setTimeout(() => {
+        chatMessages.innerHTML += `<div class="mb-2 text-primary"><b>SHINZ AI:</b> Cảm ơn bạn! Nhân viên sẽ hỗ trợ bạn sớm nhất nhé.</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 500);
+}
+// Thêm vào cuối phần Script cũ
+function toggleChat() {
+    let box = document.getElementById('chatBox');
+    box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function showPage(pageId, element) {
+    document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + pageId).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    element.classList.add('active');
+    window.scrollTo(0,0);
+}
+
+function sendMessage() {
+    let input = document.getElementById('chatInput');
+    let msg = input.value;
+    if(!msg) return;
+    document.getElementById('chatMessages').innerHTML += `<div><b>Bạn:</b> ${msg}</div>`;
+    input.value = "";
+    setTimeout(() => {
+        document.getElementById('chatMessages').innerHTML += `<div class="text-primary"><b>AI:</b> Chào bạn, shop sẽ phản hồi sớm nhé!</div>`;
+    }, 1000);
+}
     </script>
 </body>
 </html>
