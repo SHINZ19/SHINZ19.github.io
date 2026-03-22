@@ -3,36 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHINZ PC - Hi-End PC Accessories</title>
+    <title>SHINZ PC - Đồ án Kỹ năng nghề nghiệp</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { --primary: #00d2ff; --dark: #0d0d0d; --bg-light: #f8f9fa; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-light); margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg-light); margin: 0; padding: 0; }
         
-        /* HEADER SECTION */
+        /* 1. TOP INFO BAR */
         .top-info-bar { background: #1a1a1a; color: #ccc; font-size: 0.85rem; padding: 10px 0; border-bottom: 1px solid #333; }
         .top-info-bar a { color: var(--primary); text-decoration: none; }
         
-        .main-header { background: var(--dark); padding: 20px 0; color: white; text-align: center; border-bottom: 3px solid var(--primary); }
-        .brand-center { font-size: 3rem; font-weight: 800; letter-spacing: 5px; color: white; text-shadow: 0 0 15px var(--primary); }
-        
-        /* NAVBAR */
-        .navbar-custom { background: #111; padding: 10px 0; }
+        /* 2. MAIN HEADER (BANNER ĐỘNG) */
+        .main-header { 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1920'); 
+            background-size: cover; background-position: center; background-attachment: fixed;
+            height: 250px; color: white; text-align: center; border-bottom: 3px solid var(--primary); 
+            position: sticky; top: -100px; z-index: 999; transition: all 0.4s ease-in-out; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .main-header.scrolled { height: 70px; top: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1920'); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .brand-center { font-size: 4rem; font-weight: 800; letter-spacing: 10px; color: white; text-shadow: 0 0 15px var(--primary); transition: all 0.4s ease-in-out; }
+        .main-header.scrolled .brand-center { font-size: 1.8rem; letter-spacing: 3px; }
+
+        /* 3. NAVBAR */
+        .navbar-custom { background: transparent; padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; position: absolute; bottom: 0; }
         .logo-box { display: flex; align-items: center; text-decoration: none; color: white !important; }
         .logo-z { width: 35px; height: 35px; border-radius: 50%; background: var(--primary); color: black; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-right: 10px; }
         
-        /* CATEGORY TITLE */
+        /* HIỂN THỊ SẢN PHẨM */
         .all-components-title { font-size: 1.5rem; font-weight: bold; text-align: center; margin: 25px 0; position: relative; }
         .all-components-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--primary); margin: 8px auto; }
-
-        /* PRODUCT CARD */
         .pc-card { border: none; border-radius: 12px; transition: 0.3s; height: 100%; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .pc-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,210,255,0.2); }
         .pc-card img { height: 180px; object-fit: contain; padding: 15px; }
         .price-tag { color: #ff4757; font-weight: bold; font-size: 1.1rem; }
+
+        /* PAGE SWITCH */
+        .page-content { display: none; padding-top: 30px; }
+        .active-page { display: block; }
+        .cart-badge { background: #ff4757; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; position: absolute; top: 0; right: 0; }
 
         /* CHATBOT */
         .chatbot-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
@@ -42,103 +55,82 @@
         .chat-messages { flex-grow: 1; padding: 10px; overflow-y: auto; font-size: 0.9rem; }
         .chat-input { display: flex; border-top: 1px solid #eee; }
         .chat-input input { flex-grow: 1; border: none; padding: 10px; outline: none; }
-
-        /* PAGE SWITCH */
-        .page-content { display: none; }
-        .active-page { display: block; }
-        .cart-badge { background: #ff4757; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem; position: absolute; top: 0; right: 0; }
     </style>
 </head>
 <body>
 
 <div class="top-info-bar">
     <div class="container d-flex flex-wrap justify-content-between align-items-center">
-        <div>
-            <i class="fas fa-phone-alt"></i> Hotline: <b>0392966091</b> | 
-            <i class="fas fa-clock"></i> 9:00 - 21:00
-        </div>
-        <div>
-            <i class="fas fa-map-marker-alt"></i> Khu vực Thới Hòa 1, Thới Thuận, Thốt Nốt, Cần Thơ 
-            <a href="https://www.google.com/maps/search/Khu+vực+Thới+Hòa+1,+Thới+Thuận,+Thốt+Nốt,+Cần+Thơ" target="_blank" class="ms-2 btn btn-outline-info btn-sm">Xem Bản Đồ</a>
-        </div>
+        <div><i class="fas fa-phone-alt"></i> Hotline: 0392966091 | <i class="fas fa-clock"></i> 9:00 - 21:00</div>
+        <div><i class="fas fa-map-marker-alt"></i> Khu vực Thới Hòa 1, Cần Thơ <a href="#" class="ms-2 btn btn-outline-info btn-sm">Google Map</a></div>
     </div>
 </div>
 
-<header class="main-header">
+<header class="main-header" id="dynamicHeader">
     <div class="brand-center">SHINZ PC</div>
 </header>
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
     <div class="container">
         <a class="logo-box" href="#" onclick="showPage('home')">
-            <div class="logo-z">Z</div>
-            <span class="fw-bold">SHINZ PC</span>
+            <div class="logo-z">Z</div><span class="fw-bold fs-5">SHINZ PC</span>
         </a>
-        
         <div class="d-flex flex-grow-1 mx-lg-5 my-2 my-lg-0">
-            <input type="text" id="searchInput" class="form-control rounded-pill me-2" placeholder="Tìm tên sản phẩm chính xác...">
+            <input type="text" id="searchInput" class="form-control rounded-pill px-4" placeholder="Tìm tên sản phẩm..." onkeyup="searchProduct()">
         </div>
-
         <div class="d-flex align-items-center">
             <a href="#" class="nav-link text-white me-3" onclick="showPage('account')"><i class="fas fa-user-plus"></i> Tài khoản</a>
             <div class="position-relative" onclick="showPage('cart')" style="cursor:pointer">
-                <i class="fas fa-shopping-cart fa-lg text-white"></i>
-                <span id="cart-count" class="cart-badge">0</span>
+                <i class="fas fa-shopping-cart fa-lg text-white"></i><span id="cart-count" class="cart-badge">0</span>
             </div>
         </div>
     </div>
 </nav>
 
-<div class="container">
-    
+<div class="container" id="main-content-wrapper">
     <div id="page-home" class="page-content active-page">
         <div class="all-components-title">TẤT CẢ LINH KIỆN</div>
-        <div class="row g-4" id="productList">
-            </div>
+        <div class="row g-4" id="productList"></div>
     </div>
 
     <div id="page-account" class="page-content py-5">
         <div class="row justify-content-center">
             <div class="col-md-5 bg-white p-4 rounded shadow">
-                <h4 class="fw-bold text-center mb-4">TẠO TÀI KHOẢN</h4>
-                <div class="mb-3"><input type="text" class="form-control" placeholder="Họ và tên"></div>
-                <div class="mb-3"><input type="email" class="form-control" placeholder="Email"></div>
-                <div class="mb-3"><input type="password" class="form-control" placeholder="Mật khẩu"></div>
-                <div class="mb-3"><input type="password" class="form-control" placeholder="Nhập lại mật khẩu"></div>
+                <h4 class="fw-bold text-center mb-4">ĐĂNG KÝ TÀI KHOẢN</h4>
+                <input type="text" class="form-control mb-3" placeholder="Họ và tên">
+                <input type="email" class="form-control mb-3" placeholder="Email">
+                <input type="password" class="form-control mb-3" placeholder="Mật khẩu">
                 <button class="btn btn-primary w-100 mb-2" onclick="fakeLogin()">ĐĂNG KÝ</button>
-                <div class="text-center my-2 text-muted">Hoặc</div>
-                <button class="btn btn-outline-primary w-100 mb-2" onclick="fakeLogin()"><i class="fab fa-facebook"></i> Tiếp tục với Facebook</button>
-                <button class="btn btn-outline-danger w-100" onclick="fakeLogin()"><i class="fab fa-google"></i> Tiếp tục với Email (Google)</button>
+                <button class="btn btn-outline-primary w-100" onclick="fakeLogin()"><i class="fab fa-facebook"></i> Facebook</button>
             </div>
         </div>
     </div>
 
     <div id="page-cart" class="page-content py-5">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-lg-7">
                 <h4 class="fw-bold mb-4">GIỎ HÀNG CỦA BẠN</h4>
-                <div id="cart-items" class="bg-white p-3 rounded shadow-sm">
-                    </div>
+                <div id="cart-items" class="bg-white p-3 rounded shadow-sm"></div>
             </div>
-            <div class="col-md-5">
+            <div class="col-lg-5">
                 <div class="bg-white p-4 rounded shadow">
-                    <h5 class="fw-bold mb-3">THÔNG TIN THANH TOÁN</h5>
-                    <input type="text" class="form-control mb-2" id="order-name" placeholder="Họ và tên">
-                    <input type="text" class="form-control mb-2" id="order-phone" placeholder="Số điện thoại">
-                    <input type="email" class="form-control mb-2" id="order-email" placeholder="Email">
-                    <select class="form-select mb-2" id="shipping-method" onchange="calcTotal()">
-                        <option value="0">Cùng phường (Free Ship)</option>
-                        <option value="20000">Ngoài phường (Dưới 5km - 20k)</option>
-                        <option value="40000">Trên 5km (40k)</option>
-                    </select>
-                    <textarea class="form-control mb-3" id="order-address" placeholder="Địa chỉ chi tiết"></textarea>
+                    <h5 class="fw-bold mb-3">THANH TOÁN</h5>
+                    <input type="text" class="form-control mb-2" placeholder="Họ tên">
+                    <input type="text" class="form-control mb-2" placeholder="Số điện thoại">
                     
-                    <div class="d-flex justify-content-between mb-1"><span>Tạm tính:</span> <b id="subtotal">0đ</b></div>
-                    <div class="d-flex justify-content-between mb-1"><span>Phí ship:</span> <b id="ship-fee">0đ</b></div>
-                    <div class="d-flex justify-content-between mb-1"><span>Phí sàn (1%):</span> <b id="platform-fee">0đ</b></div>
+                    <label class="small fw-bold mt-2">Khu vực giao hàng:</label>
+                    <select class="form-select mb-3" id="shipping-method" onchange="calcTotal()">
+                        <option value="0">Cùng phường (Free Ship)</option>
+                        <option value="20000">Ngoài phường (Dưới 5km - 20,000đ)</option>
+                        <option value="40000">Ngoài phường (Trên 5km - 40,000đ)</option>
+                    </select>
+                    
+                    <div class="d-flex justify-content-between"><span>Tạm tính:</span> <b id="subtotal">0đ</b></div>
+                    <div class="d-flex justify-content-between text-primary"><span>Phí vận chuyển:</span> <b id="ship-fee">0đ</b></div>
+                    <div class="d-flex justify-content-between text-muted"><span>Phí sàn & VAT (2%):</span> <b id="platform-fee">0đ</b></div>
                     <hr>
-                    <div class="d-flex justify-content-between mb-4"><span class="h5">TỔNG:</span> <b id="final-total" class="h4 text-danger">0đ</b></div>
-                    <button class="btn btn-success w-100 btn-lg" onclick="alert('Đặt hàng thành công!')">XÁC NHẬN THANH TOÁN</button>
+                    <div class="d-flex justify-content-between mb-4"><span class="h5">TỔNG CỘNG:</span> <b id="final-total" class="h4 text-danger">0đ</b></div>
+                    <button class="btn btn-success w-100 py-3 fw-bold" onclick="alert('Đặt hàng thành công!')">XÁC NHẬN ĐƠN HÀNG</button>
                 </div>
             </div>
         </div>
@@ -148,141 +140,95 @@
 <div class="chatbot-container">
     <div class="chat-box" id="chatBox">
         <div class="chat-header">SHINZ AI Support</div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="bg-light p-2 rounded mb-2">Chào bạn! SHINZ PC có thể giúp gì cho bạn?</div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Nhập tin nhắn...">
-            <button class="btn btn-primary btn-sm" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input"><input type="text" id="chatInput"><button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div>
     </div>
-    <button class="chat-btn" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></button>
+    <button class="chat-btn" onclick="toggleChat()"><i class="fas fa-robot"></i></button>
 </div>
 
 <script>
-    // DATA SẢN PHẨM (Mỗi loại 5 sản phẩm từ rẻ đến đắt)
     const products = [
-        // CPU Core i3
-        { id: 1, name: "Intel Core i3-10100F", price: 1650000, img: "https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg", cat: "CPU" },
-        { id: 2, name: "Intel Core i3-12100F", price: 2350000, img: "https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg", cat: "CPU" },
-        { id: 3, name: "Intel Core i3-13100F", price: 2950000, img: "https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg", cat: "CPU" },
-        { id: 4, name: "Intel Core i3-14100", price: 3850000, img: "https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg", cat: "CPU" },
-        { id: 5, name: "Intel Core i3-14100F Box", price: 3150000, img: "https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg", cat: "CPU" },
-        // Card đồ họa (GPU)
-        { id: 6, name: "GTX 1650 4GB D6", price: 3950000, img: "https://vn.msi.com/graphics-card/GeForce-GTX-1650-D6-VENTUS-XS-OC/images/1650.png", cat: "GPU" },
-        { id: 7, name: "RTX 3050 8GB OC", price: 6250000, img: "https://dlcdnwebimgs.asus.com/gain/B574F96E-10C5-4C3D-B446-2D87F25D6E18", cat: "GPU" },
-        { id: 8, name: "RTX 4060 Dual Fan", price: 8450000, img: "https://static.gigabyte.com/StaticFile/Image/Global/998527a949666795f7c35d4508365922/Product/34827/png/1000", cat: "GPU" },
-        { id: 9, name: "RTX 4070 Super", price: 17990000, img: "https://dlcdnwebimgs.asus.com/gain/8036B73D-07C4-47A4-A109-8B708A8812D3", cat: "GPU" },
-        { id: 10, name: "RTX 4090 Rog Strix", price: 65900000, img: "https://dlcdnwebimgs.asus.com/gain/8036B73D-07C4-47A4-A109-8B708A8812D3", cat: "GPU" },
-        // Bàn phím
-        { id: 11, name: "Phím Văn Phòng K120", price: 150000, img: "https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto:best,f_auto,dpr_1.0/content/dam/logitech/en/products/keyboards/k120/k120-gallery-1.png", cat: "Phím" },
-        { id: 12, name: "DareU EK87 Mechanical", price: 550000, img: "https://dareu.com.vn/wp-content/uploads/2020/09/EK87-Black-Blue-SW.jpg", cat: "Phím" },
-        { id: 13, name: "Akko 3087 V2", price: 1250000, img: "https://akkogear.com.vn/wp-content/uploads/2020/12/3087-v2-steam-engine-1.jpg", cat: "Phím" },
-        { id: 14, name: "Corsair K70 RGB", price: 3450000, img: "https://m.media-amazon.com/images/I/71u92N0lKqL._AC_SL1500_.jpg", cat: "Phím" },
-        { id: 15, name: "Razer DeathStalker V2", price: 5250000, img: "https://assets2.razerzone.com/images/pnx.assets/0a0b0d3e5b4b7f8c0a0b0d3e5b4b7f8c/deathstalker-v2-pro-tkl-500x500.png", cat: "Phím" },
+        { id: 1, name: "Intel Core i3-12100F", price: 2150000, img: "https://m.media-amazon.com/images/I/516mD0rC3RL._AC_SL1000_.jpg", cat: "CPU" },
+        { id: 2, name: "RTX 4060 Asus Dual", price: 8450000, img: "https://dlcdnwebimgs.asus.com/gain/B574F96E-10C5-4C3D-B446-2D87F25D6E18", cat: "GPU" },
+        { id: 3, name: "Phím Cơ Akko 3087", price: 1250000, img: "https://akkogear.com.vn/wp-content/uploads/2020/12/3087-v2-steam-engine-1.jpg", cat: "Gear" },
+        { id: 4, name: "Màn Hình Asus TUF 27\"", price: 5150000, img: "https://dlcdnwebimgs.asus.com/gain/0D4F4F6C-27B4-406F-9C9D-999B7F1C9F9C", cat: "Monitor" }
     ];
 
     let cart = [];
 
-    // Hiển thị sản phẩm
-    function init() {
-        const list = document.getElementById('productList');
-        list.innerHTML = products.map(p => `
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card pc-card">
-                    <img src="${p.img}" class="card-img-top">
-                    <div class="card-body">
-                        <small class="text-muted">${p.cat}</small>
-                        <h6 class="fw-bold">${p.name}</h6>
-                        <p class="price-tag">${p.price.toLocaleString()}đ</p>
-                        <button class="btn btn-outline-primary btn-sm w-100" onclick="addToCart(${p.id})">Thêm vào giỏ</button>
-                    </div>
+    // --- LOGIC TÍNH PHÍ SÀN & SHIP (CẬP NHẬT TỪ CODE CŨ) ---
+    function calcTotal() {
+        let subtotal = cart.reduce((sum, p) => sum + p.price, 0);
+        
+        // Lấy giá trị phí ship từ ô Select
+        let shipFee = parseInt(document.getElementById('shipping-method').value);
+        
+        // Tính phí sàn cố định 2%
+        let platformFee = subtotal * 0.02;
+        
+        let finalTotal = subtotal + shipFee + platformFee;
+
+        // Hiển thị ra giao diện
+        document.getElementById('subtotal').innerText = subtotal.toLocaleString() + "đ";
+        document.getElementById('ship-fee').innerText = shipFee.toLocaleString() + "đ";
+        document.getElementById('platform-fee').innerText = platformFee.toLocaleString() + "đ";
+        document.getElementById('final-total').innerText = finalTotal.toLocaleString() + "đ";
+    }
+
+    // --- HIỆU ỨNG CUỘN CHUỘT (GIỮ NGUYÊN CODE MỚI) ---
+    window.onscroll = function() {
+        var header = document.getElementById("dynamicHeader");
+        if (document.documentElement.scrollTop > 80) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    };
+
+    function renderProducts(list) {
+        document.getElementById('productList').innerHTML = list.map(p => `
+            <div class="col-6 col-md-3"><div class="card pc-card">
+                <img src="${p.img}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h6 class="fw-bold small">${p.name}</h6>
+                    <p class="price-tag">${p.price.toLocaleString()}đ</p>
+                    <button class="btn btn-primary btn-sm w-100" onclick="addToCart(${p.id})">Thêm vào giỏ</button>
                 </div>
-            </div>
-        `).join('');
+            </div></div>`).join('');
     }
 
-    // Chuyển trang
-    function showPage(pageId) {
-        document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
-        document.getElementById('page-' + pageId).classList.add('active-page');
-        window.scrollTo(0,0);
-        if(pageId === 'cart') renderCart();
-    }
-
-    // Giỏ hàng
     function addToCart(id) {
-        const p = products.find(x => x.id === id);
-        cart.push(p);
+        cart.push(products.find(x => x.id === id));
         document.getElementById('cart-count').innerText = cart.length;
-        alert("Đã thêm " + p.name + " vào giỏ hàng!");
+        alert("Đã thêm vào giỏ hàng!");
     }
 
     function renderCart() {
         const list = document.getElementById('cart-items');
-        if(cart.length === 0) {
-            list.innerHTML = "Giỏ hàng trống";
-            calcTotal();
-            return;
-        }
-        list.innerHTML = cart.map((p, index) => `
+        list.innerHTML = cart.map((p, i) => `
             <div class="d-flex align-items-center mb-3 border-bottom pb-2">
                 <img src="${p.img}" width="50" class="me-3">
-                <div class="flex-grow-1">
-                    <h6 class="mb-0 small">${p.name}</h6>
-                    <b class="text-danger">${p.price.toLocaleString()}đ</b>
-                </div>
-                <button class="btn btn-sm btn-light" onclick="removeItem(${index})"><i class="fas fa-times"></i></button>
-            </div>
-        `).join('');
+                <div class="flex-grow-1"><b>${p.name}</b><br><span class="text-danger">${p.price.toLocaleString()}đ</span></div>
+                <button class="btn btn-sm text-muted" onclick="removeCart(${i})">Xóa</button>
+            </div>`).join('');
         calcTotal();
     }
 
-    function removeItem(index) {
-        cart.splice(index, 1);
-        document.getElementById('cart-count').innerText = cart.length;
-        renderCart();
+    function removeCart(idx) { cart.splice(idx, 1); document.getElementById('cart-count').innerText = cart.length; renderCart(); }
+    function showPage(id) { 
+        document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
+        document.getElementById('page-' + id).classList.add('active-page');
+        if(id === 'cart') renderCart();
+        window.scrollTo(0,0);
+    }
+    function fakeLogin() { alert("Đăng nhập thành công!"); showPage('home'); }
+    function toggleChat() { let b = document.getElementById('chatBox'); b.style.display = b.style.display === 'flex' ? 'none' : 'flex'; }
+    function searchProduct() {
+        let key = document.getElementById('searchInput').value.toLowerCase();
+        renderProducts(products.filter(p => p.name.toLowerCase().includes(key)));
     }
 
-    function calcTotal() {
-        let subtotal = cart.reduce((sum, p) => sum + p.price, 0);
-        let shipFee = parseInt(document.getElementById('shipping-method').value);
-        let platformFee = subtotal * 0.01;
-        let final = subtotal + shipFee + platformFee;
-
-        document.getElementById('subtotal').innerText = subtotal.toLocaleString() + "đ";
-        document.getElementById('ship-fee').innerText = shipFee.toLocaleString() + "đ";
-        document.getElementById('platform-fee').innerText = platformFee.toLocaleString() + "đ";
-        document.getElementById('final-total').innerText = final.toLocaleString() + "đ";
-    }
-
-    // Login giả lập
-    function fakeLogin() {
-        alert("Đăng nhập/Đăng ký thành công!");
-        showPage('home');
-    }
-
-    // Chatbot logic
-    function toggleChat() {
-        const box = document.getElementById('chatBox');
-        box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-    function sendMessage() {
-        const input = document.getElementById('chatInput');
-        const msgs = document.getElementById('chatMessages');
-        if(!input.value) return;
-
-        msgs.innerHTML += `<div class="text-end mb-2"><span class="bg-primary text-white p-2 rounded d-inline-block">${input.value}</span></div>`;
-        setTimeout(() => {
-            msgs.innerHTML += `<div class="mb-2"><span class="bg-light p-2 rounded d-inline-block">Dạ, SHINZ PC đã nhận thông tin, nhân viên sẽ hỗ trợ bạn ngay!</span></div>`;
-            msgs.scrollTop = msgs.scrollHeight;
-        }, 1000);
-        input.value = "";
-    }
-
-    init();
+    renderProducts(products);
 </script>
-
 </body>
 </html>
